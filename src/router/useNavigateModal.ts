@@ -11,10 +11,14 @@ export const useNavigateModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const { previousLocation } = (location.state ?? {}) as {
+    previousLocation?: Location;
+  };
+
   // we make normal routing work as well as param routing, but make multiple params invalid
   return <T extends string>(url: ValidModalUrl<T>) => {
     navigate(url, {
-      state: { previousLocation: location },
+      state: { previousLocation: previousLocation ?? location },
     });
   };
 };

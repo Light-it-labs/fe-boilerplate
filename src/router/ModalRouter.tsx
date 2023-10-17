@@ -7,7 +7,6 @@ import { MODAL_ROUTES } from "./routes";
 export const ModalRouter = ({ showModal }: { showModal: boolean }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const goBack = () => navigate(-1);
 
   return (
     <TransitionGroup>
@@ -16,6 +15,8 @@ export const ModalRouter = ({ showModal }: { showModal: boolean }) => {
           const show = state !== "exited" && state !== "exiting";
 
           if (!showModal) return null;
+
+          const goBack = () => state !== "exiting" && navigate(-1);
 
           return (
             <Routes location={location}>
