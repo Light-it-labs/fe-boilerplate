@@ -1,8 +1,8 @@
 import type { ComponentPropsWithoutRef, ForwardedRef } from "react";
 import { twMerge as tw } from "tailwind-merge";
 
+import { IconWrapper } from "~/ui/IconWrapper";
 import { forwardRef } from "~/utils";
-import { IconWrapper } from "./IconWrapper";
 
 export const buttonVariants = [
   "primary",
