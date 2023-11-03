@@ -1,7 +1,8 @@
 import { useLayoutEffect, useState } from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
 
-import tailwindConfig from "~/../tailwind.config";
+// I don't like this 🥀
+import tailwindConfig from "../../tailwind.config";
 
 const config = resolveConfig(tailwindConfig);
 
