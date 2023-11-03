@@ -5,6 +5,7 @@ import animate from "tailwindcss-animate";
 import type { Config } from "tailwindcss";
 
 export default {
+  // Change this with the extensions you are going to use.
   content: [
     "./src/**/*.{html,js,jsx,md,mdx,svelte,ts,tsx,vue,svg}",
   ],
