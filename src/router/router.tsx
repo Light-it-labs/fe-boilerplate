@@ -3,9 +3,9 @@ import type { Location } from "react-router-dom";
 
 import { Layout } from "~/layout";
 import { Home, Login, NotFound } from "~/screens";
+import { useUserStore } from "~/stores";
 import { ModalRouter } from "./ModalRouter";
 import { ROUTES } from "./routes";
-import { useUserStore } from "~/stores";
 
 export const Router = () => {
   const location = useLocation();
@@ -23,7 +23,7 @@ export const Router = () => {
         {/* PUBLIC ONLY ROUTES */}
         {userState === "loggedOut" && (
           <>
-           <Route
+            <Route
               element={<Navigate to={ROUTES.login} replace />}
               path={"*"}
             />
@@ -32,17 +32,14 @@ export const Router = () => {
         )}
         {/* PRIVATE ONLY ROUTES */}
         {userState === "loggedIn" && (
-         <>
-            <Route
-                element={<Navigate to={ROUTES.home} />}
-                path={"*"}
-              />
+          <>
+            <Route element={<Navigate to={ROUTES.home} />} path={"*"} />
             <Route path="*" element={<NotFound />} />
             <Route element={<Layout />}>
               <Route element={<Home />} path={ROUTES.home} />
             </Route>
-          </>     
-            )}
+          </>
+        )}
       </Routes>
       <Routes>
         <Route
