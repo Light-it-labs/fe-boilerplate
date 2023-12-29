@@ -26,11 +26,11 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
     },
   };
 
-  const { SENTRY_AUTH_TOKEN, VITE_SENTRY_ORGANIZATION, VITE_SENTRY_PROJECT } = process.env;
+  const { VITE_SENTRY_AUTH_TOKEN, VITE_SENTRY_ORGANIZATION, VITE_SENTRY_PROJECT } = process.env;
 
-  if (SENTRY_AUTH_TOKEN && VITE_SENTRY_ORGANIZATION && VITE_SENTRY_PROJECT) {
+  if (VITE_SENTRY_AUTH_TOKEN && VITE_SENTRY_ORGANIZATION && VITE_SENTRY_PROJECT) {
     baseConfig.plugins.push(sentryVitePlugin({
-      authToken: SENTRY_AUTH_TOKEN,
+      authToken: VITE_SENTRY_AUTH_TOKEN,
       org: VITE_SENTRY_ORGANIZATION,
       project: VITE_SENTRY_PROJECT,
     }));
