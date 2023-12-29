@@ -26,7 +26,7 @@ if (!root) {
 }
 
 Sentry.init({
-  dsn: "https://81034eae5db8757aa05042f8afaaa360@o4506473427238912.ingest.sentry.io/4506473447424000",
+  dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({
       // See docs for support of different versions of variation of react router
