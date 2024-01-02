@@ -19,7 +19,10 @@ Sentry is a developer-first error tracking and performance monitoring platform. 
 4. Run `npx @sentry/wizard@latest -i sourcemaps` in order to get the key for the `VITE_SENTRY_AUTH_TOKEN` `.env` variable. You can learn more about the purpose of this command [here](https://docs.sentry.io/platforms/javascript/guides/react/#add-readable-stack-traces-to-errors)
 5. To confirm that everything is correctly configured, you can implement a button in your application to manually trigger an error when clicking on it. To view and address the recorded error, log into your account and open your project (which represents your service and enables scoping of events to a specific application)
 
-**DISCLAIMER**: If you see this in your network tab, it may be due to the browser you're using. This screenshot was taken from the Arc browser, which made it seem as if something was missing, while on the Google browser the request is successful.
+**DISCLAIMERS**:
+- React's error boundaries, including Sentry's integration, do not catch exceptions in event handlers. This limitation is inherent to React's error handling and not specific to Sentry. For errors in event handlers, manual error logging or alternative methods are required.
+
+- If you see this in your network tab, it may be due to the browser you're using. This screenshot was taken from the Arc browser, which made it seem as if something was missing, while on the Google browser the request is successful.
 
 ![Sentry request error](https://github.com/Light-it-labs/fe-boilerplate/assets/68563891/25412a77-f34d-4f00-8477-5f9fce0ee09d)
 
