@@ -16,11 +16,13 @@ Sentry is a developer-first error tracking and performance monitoring platform. 
 1. Create an account [here](https://sentry.io)
 2. Create a project within an organization
 3. Copy the DSN provided below "Configure SDK" and paste it in your `.env`'s `SENTRY_LARAVEL_DSN`
-4. You can test your configuration using `sail artisan sentry:test`
+4. Run `npx @sentry/wizard@latest -i sourcemaps` in order to get the key for the `VITE_SENTRY_AUTH_TOKEN` `.env` variable. You can learn more about the purpose of this command [here](https://docs.sentry.io/platforms/javascript/guides/react/#add-readable-stack-traces-to-errors)
+5. To confirm that everything is correctly configured, you can implement a button in your application to manually trigger an error when clicking on it. To view and address the recorded error, log into your account and open your project (which represents your service and enables scoping of events to a specific application)
 
 **DISCLAIMER**: If you see this in your network tab, it may be due to the browser you're using. This screenshot was taken from the Arc browser, which made it seem as if something was missing, while on the Google browser the request is successful.
 
-![Sentry request error](image.png)
+![Sentry request error](https://github.com/Light-it-labs/fe-boilerplate/assets/68563891/25412a77-f34d-4f00-8477-5f9fce0ee09d)
+
 
 ## Expanding the ESLint configuration
 
