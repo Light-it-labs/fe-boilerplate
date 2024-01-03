@@ -8,7 +8,13 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
   // Load and merge environment variables
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   
-  const { VITE_SENTRY_AUTH_TOKEN, VITE_SENTRY_ORGANIZATION, VITE_SENTRY_PROJECT } = process.env;
+  const { 
+    VITE_SENTRY_AUTH_TOKEN, 
+    VITE_SENTRY_ORGANIZATION, 
+    VITE_SENTRY_PROJECT,
+    VITE_APP_ENV,
+    VITE_APP_URL
+   } = process.env;
 
   const baseConfig = {
     plugins: [
