@@ -34,7 +34,7 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
     },
     server: {
       open: true,
-      origin: process.env.VITE_APP_ENV === "local" ? process.env.VITE_APP_URL : "",
+      origin: VITE_APP_ENV === "local" ? VITE_APP_URL : "",
     },
     resolve: {
       alias: [{ find: "~", replacement: path.resolve(__dirname, "./src") }],
