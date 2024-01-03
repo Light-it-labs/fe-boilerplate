@@ -8,8 +8,17 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
   // Load and merge environment variables
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   
+  const { VITE_SENTRY_AUTH_TOKEN, VITE_SENTRY_ORGANIZATION, VITE_SENTRY_PROJECT } = process.env;
+
   const baseConfig = {
-    plugins: [react()],
+    plugins: [
+      react(),
+      sentryVitePlugin({
+        authToken: VITE_SENTRY_AUTH_TOKEN,
+        org: VITE_SENTRY_ORGANIZATION,
+        project: VITE_SENTRY_PROJECT,
+      })
+    ].filter(Boolean),
     build: {
       sourcemap: true,
       manifest: true,
@@ -25,16 +34,6 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
       alias: [{ find: "~", replacement: path.resolve(__dirname, "./src") }],
     },
   };
-
-  const { VITE_SENTRY_AUTH_TOKEN, VITE_SENTRY_ORGANIZATION, VITE_SENTRY_PROJECT } = process.env;
-
-  if (VITE_SENTRY_AUTH_TOKEN && VITE_SENTRY_ORGANIZATION && VITE_SENTRY_PROJECT) {
-    baseConfig.plugins.push(sentryVitePlugin({
-      authToken: VITE_SENTRY_AUTH_TOKEN,
-      org: VITE_SENTRY_ORGANIZATION,
-      project: VITE_SENTRY_PROJECT,
-    }));
-  }
 
   return defineConfig(baseConfig);
 };
