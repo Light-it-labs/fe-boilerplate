@@ -39,7 +39,7 @@ function parseStringToArray(input: string): (string | RegExp)[] {
       }
   });
 }
-
+        
 Sentry.init({
   dsn: env.VITE_SENTRY_DSN,
   integrations: [
