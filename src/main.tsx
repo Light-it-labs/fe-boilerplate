@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRoot } from "react-dom/client";
 import * as Sentry from "@sentry/react";
+import { ErrorBoundaryFallback } from "./screens/ErrorBoundaryFallback";
+
 
 import "./index.css";
 
@@ -61,7 +63,10 @@ createRoot(root).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <GoogleOAuthProvider clientId={env.VITE_GOOGLE_AUTH_SSO_CLIENT_ID}>
-        <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
+        <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback 
+                                          title="An error has ocurred" 
+                                          description="This is a basic usage, you can add an error code too!"/>
+}>
           <BrowserRouter>
             <Router />
           </BrowserRouter>
