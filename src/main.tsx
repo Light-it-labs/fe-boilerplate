@@ -25,12 +25,15 @@ if (!root) {
   );
 }
 
-
-function parseStringToArray(input: string): (string )[] {
+const parseStringToArray = (input: string): (string|RegExp)[] => {
   const elements = input.slice(1, -1).split(", ");
 
   return elements.map(element => {
-      return element.replace(/['"]+/g, '');
+    if (element.startsWith("/") && element.endsWith("/")) {
+      const regexBody = element.slice(1, -1);
+      return new RegExp(regexBody);
+  }
+  return element;
   });
 }
 
@@ -63,8 +66,6 @@ Sentry.init({
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
-
-
 
 createRoot(root).render(
   <StrictMode>
