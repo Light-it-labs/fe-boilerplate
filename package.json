@@ -26,6 +26,8 @@
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.3.1",
     "@react-oauth/google": "^0.11.1",
+    "@sentry/react": "^7.91.0",
+    "@sentry/vite-plugin": "^2.10.2",
     "@tanstack/react-query": "^5.4.3",
     "@tanstack/react-query-devtools": "^5.4.3",
     "axios": "^1.5.1",
