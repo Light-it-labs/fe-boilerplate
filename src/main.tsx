@@ -31,7 +31,7 @@ function parseStringToArray(input: string): (string | RegExp)[] {
   const elements = input.slice(1, -1).split(", ");
 
   return elements.map(element => {
-      if (element.startsWith("/^") && element.endsWith("/")) {
+      if (element.startsWith("/") && element.endsWith("/")) {
           const regexBody = element.slice(1, -1);
           return new RegExp(regexBody);
       } else {
