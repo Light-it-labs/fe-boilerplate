@@ -64,9 +64,7 @@ createRoot(root).render(
     <QueryClientProvider client={queryClient}>
       <GoogleOAuthProvider clientId={env.VITE_GOOGLE_AUTH_SSO_CLIENT_ID}>
         <Sentry.ErrorBoundary fallback={
-          <ErrorBoundaryFallback title="An error has occurred">
-            This is a basic usage, you can add an error code too!
-          </ErrorBoundaryFallback>
+          <ErrorBoundaryFallback/>
           }>
           <BrowserRouter>
             <Router />
