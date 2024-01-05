@@ -63,9 +63,7 @@ createRoot(root).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <GoogleOAuthProvider clientId={env.VITE_GOOGLE_AUTH_SSO_CLIENT_ID}>
-        <Sentry.ErrorBoundary fallback={
-          <ErrorBoundaryFallback/>
-          }>
+        <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}>
           <BrowserRouter>
             <Router />
           </BrowserRouter>
