@@ -25,18 +25,6 @@ if (!root) {
   );
 }
 
-const parseStringToArray = (input: string): (string|RegExp)[] => {
-  const elements = input.slice(1, -1).split(", ");
-
-  return elements.map(element => {
-    if (element.startsWith("/") && element.endsWith("/")) {
-      const regexBody = element.slice(1, -1);
-      return new RegExp(regexBody);
-  }
-  return element;
-  });
-}
-
 Sentry.init({
   dsn: env.VITE_SENTRY_DSN,
   integrations: [
@@ -59,7 +47,7 @@ Sentry.init({
   tracesSampleRate: 1.0,
 
   // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
-  tracePropagationTargets: parseStringToArray(env.VITE_SENTRY_TRACE_PROPAGATION_TARGETS),
+  tracePropagationTargets: [env.VITE_SENTRY_TRACE_PROPAGATION_TARGET_REGEX],
 
   // Capture Replay for 10% of all sessions,
   // plus for 100% of sessions with an error
