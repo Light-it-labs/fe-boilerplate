@@ -49,15 +49,13 @@ Sentry.init({
   tracesSampleRate: 1.0,
 
   // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
-  tracePropagationTargets: ["localhost", env.VITE_SENTRY_TRACE_PROPAGATION_TARGET],
+  tracePropagationTargets: [new RegExp(env.VITE_SENTRY_TRACE_PROPAGATION_TARGET_REGEX)],
 
   // Capture Replay for 10% of all sessions,
   // plus for 100% of sessions with an error
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
-
-
 
 createRoot(root).render(
   <StrictMode>
