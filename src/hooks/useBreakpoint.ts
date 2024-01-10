@@ -15,7 +15,7 @@ function matches(breakpoint: Breakpoint) {
   return query.matches;
 }
 
-export function useBreakpoint(breakpoint: Breakpoint) {
+export const useBreakpoint = (breakpoint: Breakpoint) => {
   const [match, setMatch] = useState(matches(breakpoint));
 
   useLayoutEffect(() => {
@@ -33,4 +33,4 @@ export function useBreakpoint(breakpoint: Breakpoint) {
   });
 
   return match;
-}
+};

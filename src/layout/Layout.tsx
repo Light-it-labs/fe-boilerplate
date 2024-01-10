@@ -4,7 +4,7 @@ import { useOutlet } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import { Sidebar } from "./Sidebar";
 
-export function Layout() {
+export const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const outlet = useOutlet();
 
@@ -21,4 +21,4 @@ export function Layout() {
       </div>
     </div>
   );
-}
+};
