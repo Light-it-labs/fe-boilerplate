@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRoot } from "react-dom/client";
 import * as Sentry from "@sentry/react";
+import { ErrorBoundaryFallback } from "./screens/ErrorBoundaryFallback";
+
 
 import "./index.css";
 
@@ -47,15 +49,13 @@ Sentry.init({
   tracesSampleRate: 1.0,
 
   // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
-  tracePropagationTargets: ["localhost", env.VITE_SENTRY_TRACE_PROPAGATION_TARGET],
+  tracePropagationTargets: [new RegExp(env.VITE_SENTRY_TRACE_PROPAGATION_TARGET_REGEX)],
 
   // Capture Replay for 10% of all sessions,
   // plus for 100% of sessions with an error
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
-
-
 
 createRoot(root).render(
   <StrictMode>
@@ -66,6 +66,8 @@ createRoot(root).render(
 
         <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
 
+        <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}>
+          
           <BrowserRouter>
             <Router />
           </BrowserRouter>
