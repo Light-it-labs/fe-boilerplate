@@ -25,9 +25,9 @@ export const googleLogin = async ({
   return response.data;
 };
 
-export function logout() {
+export const logout = () => {
   const { setUser, setToken } = useUserStore.getState();
 
   setUser(null);
   setToken(null);
-}
+};

@@ -13,7 +13,7 @@ export interface SidebarProps {
   onClose: () => void;
 }
 
-export function Sidebar({ show, onClose }: SidebarProps) {
+export const Sidebar = ({ show, onClose }: SidebarProps) => {
   const location = useLocation();
   const current = location.pathname;
 
@@ -143,4 +143,4 @@ export function Sidebar({ show, onClose }: SidebarProps) {
       </div>
     </>
   );
-}
+};
