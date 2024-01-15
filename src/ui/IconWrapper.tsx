@@ -11,7 +11,6 @@ export const IconWrapper = ({
   style?: React.CSSProperties;
   children: React.ReactNode;
 }) => (
-
   <div
     className={tw(
       "item-center flex flex-row",
@@ -25,5 +24,4 @@ export const IconWrapper = ({
   >
     {children}
   </div>
-  
 );
