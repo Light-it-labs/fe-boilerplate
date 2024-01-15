@@ -17,12 +17,7 @@ export interface Reminder {
 
 export const getRemindersQuery = {
   queryKey: [domain, ALL, "getRemindersQuery"],
-  queryFn: () =>
-    api
-      .get<Reminder[]>("/events")
-      .then((resp) =>
-        resp.data.map((r) => ({ ...r, minutes: r.minutes + 30 })),
-      ),
+  queryFn: () => api.get<Reminder[]>("/events"),
 };
 
 export const getReminderQuery = (id: string | null) => ({
