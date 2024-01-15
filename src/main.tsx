@@ -59,19 +59,14 @@ Sentry.init({
 
 createRoot(root).render(
   <StrictMode>
-
     <QueryClientProvider client={queryClient}>
-
       <GoogleOAuthProvider clientId={env.VITE_GOOGLE_AUTH_SSO_CLIENT_ID}>
-
         <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
 
         <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}>
-          
           <BrowserRouter>
             <Router />
           </BrowserRouter>
-
         </Sentry.ErrorBoundary>
 
         {ReactDOM.createPortal(<Toasts />, document.body)}
@@ -81,6 +76,5 @@ createRoot(root).render(
         <ReactQueryDevtools initialIsOpen={false} />
       )}
     </QueryClientProvider>
-    
   </StrictMode>,
 );

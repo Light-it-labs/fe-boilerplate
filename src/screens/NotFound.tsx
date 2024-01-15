@@ -9,7 +9,6 @@ export const NotFound = () => {
   const navigate = useNavigate();
   return (
     <main className="flex h-screen flex-col items-center justify-center">
-
       <div className="mb-20">
         <img src={LightitLogo} alt="logo" />
       </div>
@@ -28,7 +27,6 @@ export const NotFound = () => {
       >
         Go Back
       </Button>
-      
     </main>
   );
 };
