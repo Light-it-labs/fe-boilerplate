@@ -46,8 +46,10 @@ export const ToastMessage = ({ toast, onClose }: ToastMessageProps) => {
                   {toast.title}
                 </p>
               )}
+
               <p className="text-sm text-gray-500">{toast.message}</p>
             </div>
+
             <div className="ml-4 flex flex-shrink-0">
               <button
                 type="button"
@@ -55,6 +57,7 @@ export const ToastMessage = ({ toast, onClose }: ToastMessageProps) => {
                 onClick={onClose}
               >
                 <span className="sr-only">Close</span>
+
                 <XMarkIcon className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>

@@ -66,8 +66,10 @@ createRoot(root).render(
             <Router />
           </BrowserRouter>
         </Sentry.ErrorBoundary>
+
         {ReactDOM.createPortal(<Toasts />, document.body)}
       </GoogleOAuthProvider>
+
       {env.VITE_APP_ENV === "local" && (
         <ReactQueryDevtools initialIsOpen={false} />
       )}
