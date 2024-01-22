@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <command> [additional arguments]"
+    exit 1
+fi
+
+terraform -chdir=deployment/ "$@" -var-file="../local.tfvars"

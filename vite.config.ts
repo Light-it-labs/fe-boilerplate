@@ -7,10 +7,10 @@ import type { ConfigEnv, UserConfigExport } from "vite";
 const config = ({ mode }: ConfigEnv): UserConfigExport => {
   // Load and merge environment variables
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-  
-  const { 
-    VITE_SENTRY_AUTH_TOKEN, 
-    VITE_SENTRY_ORGANIZATION, 
+
+  const {
+    VITE_SENTRY_AUTH_TOKEN,
+    VITE_SENTRY_ORGANIZATION,
     VITE_SENTRY_PROJECT,
     VITE_APP_ENV,
     VITE_APP_URL
@@ -28,9 +28,9 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
     build: {
       sourcemap: true,
       manifest: true,
-      rollupOptions: {
+/*       rollupOptions: {
         input: "./src/main.tsx",
-      },
+      }, */
     },
     server: {
       open: true,
