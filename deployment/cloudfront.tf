@@ -5,7 +5,7 @@ locals {
 
 
 resource "aws_cloudfront_origin_access_control" "cloudfront_s3_oac" {
-  name                              = "CloudFront S3 OAC"
+  name                              = "${local.s3_name} OAC"
   description                       = "Cloud Front S3 OAC"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
@@ -69,8 +69,8 @@ resource "aws_cloudfront_distribution" "this" {
 
 
 resource "aws_cloudfront_function" "this" {
-  name        = "cloudfront-rewrite-urls"
-  comment     = "Rewrite URLs to index.html"
+  name        = "${local.s3_name}-cf-rewrite-urls"
+  comment     = "Rewrite URLs to index.html except for /assets/"
   runtime     = "cloudfront-js-2.0"
   code = <<EOF
 function handler(event) {
