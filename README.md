@@ -68,6 +68,8 @@ certificate_arn = "THE_ARN_OF_THE_CERTIFICATE_OF_THE_DOMAIN_FOR_HTTPS"
 
 ```
 
+For the project name, you can use any name you want. It is used to name the resources created by terraform. The profile is the name of the AWS CLI profile that will be used to create the infrastructure. This means that you must have previously configured this AWS CLI profile to use the account where you want the infrastructure to be created. The domain name is the domain that will be used to host the site, which can be configured in Route 53 or in any DNS provider. The certificate arn is the arn of the certificate created in the AWS Certificate Manager for the given domain, which must be created manually (not via terraform) before running the terraform scripts.
+
 The infrastructure can be easily created by running `./terra-local init` and then `./terra-local apply`. The `./terra-local destroy` command can be used to destroy the infrastructure.
 
 Infrastructure should be created once when the project is created, and shouldn't, in theory, require any updates. The `deployment/backend.tf` file contains the backend configuration for terraform. This is the place where the current state of the infrastructure is saved. By default, it is set to use the `local` backend, but it should be changed to use a remote backend, such as S3, so that the state is saved in a remote location. This is important so that the state is not lost if the local machine is lost.
