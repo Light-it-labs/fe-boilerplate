@@ -114,6 +114,4 @@ PRODUCTION_AWS_ACCESS_KEY_ID
 PRODUCTION_AWS_SECRET_ACCESS_KEY
 ```
 
-The staging action is configured to run on every change to the `main` branch, while the production action is configured to run only manually. This can be changed as needed.
-
-
+Both staging and production actions are configured to run only manually. This can be changed as needed.
