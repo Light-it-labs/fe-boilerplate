@@ -28,9 +28,6 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
     build: {
       sourcemap: true,
       manifest: true,
-/*       rollupOptions: {
-        input: "./src/main.tsx",
-      }, */
     },
     server: {
       open: true,
