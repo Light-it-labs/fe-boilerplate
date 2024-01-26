@@ -60,6 +60,7 @@ export const Sidebar = ({ show, onClose }: SidebarProps) => {
                       onClick={onClose}
                     >
                       <span className="sr-only">Close sidebar</span>
+
                       <XMarkIcon
                         className="h-6 w-6 text-white"
                         aria-hidden="true"
@@ -76,6 +77,7 @@ export const Sidebar = ({ show, onClose }: SidebarProps) => {
                       alt="Your Company"
                     />
                   </div>
+
                   <nav className="flex flex-1 flex-col">
                     <ul className="-mx-2 space-y-1">
                       {navigation.map((item) => (
@@ -116,6 +118,7 @@ export const Sidebar = ({ show, onClose }: SidebarProps) => {
               alt="Your Company"
             />
           </div>
+
           <nav className="flex flex-1 flex-col">
             <ul className="-mx-2 space-y-1">
               {navigation.map((item) => (

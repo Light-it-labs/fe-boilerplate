@@ -104,8 +104,10 @@ createRoot(root).render(
             <Router />
           </BrowserRouter>
         </Sentry.ErrorBoundary>
+
         {ReactDOM.createPortal(<Toasts />, document.body)}
       </GoogleOAuthProvider>
+
       {isLocal && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
   </StrictMode>,
