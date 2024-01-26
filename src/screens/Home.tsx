@@ -28,4 +28,4 @@ export const Home = () => {
       </Button>
     </div>
   );
-}
+};

@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
-import toastIcons from "./toastIcons";
+import { toastIcons } from "./toastIcons";
 import type { Toast } from "./toastStore";
 
 export interface ToastMessageProps {
