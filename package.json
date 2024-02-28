@@ -18,7 +18,12 @@
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
     "format:fix": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
     "type-check": "tsc --noEmit",
-    "with-env": "dotenv -e ./.env --"
+    "with-env": "dotenv -e ./.env --",
+
+    "build-staging": "pnpm with-env-staging vite build",
+    "build-production": "pnpm with-env-production vite build",
+    "with-env-staging": "dotenv -e ./.env.staging --",
+    "with-env-production": "dotenv -e ./.env.production --"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",

@@ -28,9 +28,6 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
     build: {
       sourcemap: true,
       manifest: true,
-      rollupOptions: {
-        input: { main: path.resolve(__dirname, "index.html") },
-      },
     },
     server: {
       open: true,
