@@ -1,3 +1,4 @@
+import type { NavigateOptions } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import type { MODAL_ROUTES } from "./routes";
@@ -15,10 +16,24 @@ export const useNavigateModal = () => {
     previousLocation?: Location;
   };
 
-  // we make normal routing work as well as param routing, but make multiple params invalid
-  return <T extends string>(url: ValidModalUrl<T>) => {
-    navigate(url, {
-      state: { previousLocation: previousLocation ?? location },
+  return <T extends string>(
+    // we make normal routing work as well as param routing, but make multiple params invalid
+    to:
+      | ValidModalUrl<T>
+      | {
+          pathname: ValidModalUrl<T>;
+          search?: string;
+          hash?: string;
+        },
+    options?: NavigateOptions,
+  ) => {
+    navigate(to, {
+      ...options,
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      state: {
+        ...options?.state,
+        previousLocation: previousLocation ?? location,
+      },
     });
   };
 };

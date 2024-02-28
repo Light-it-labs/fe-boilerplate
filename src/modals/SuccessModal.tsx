@@ -42,6 +42,7 @@ export const SuccessModal = ({ show, onClose }: SuccessModalProps) => {
                       aria-hidden="true"
                     />
                   </div>
+
                   <div className="mt-3 text-center sm:mt-5">
                     <Dialog.Title
                       as="h3"
@@ -49,6 +50,7 @@ export const SuccessModal = ({ show, onClose }: SuccessModalProps) => {
                     >
                       Payment successful
                     </Dialog.Title>
+
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
                         Some example successful text goes here
@@ -56,6 +58,7 @@ export const SuccessModal = ({ show, onClose }: SuccessModalProps) => {
                     </div>
                   </div>
                 </div>
+
                 <div className="mt-5 sm:mt-6">
                   <button
                     type="button"

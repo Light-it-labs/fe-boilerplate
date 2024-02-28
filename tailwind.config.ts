@@ -1,14 +1,12 @@
 import tailwindcss from "@headlessui/tailwindcss";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
-import animate from "tailwindcss-animate";
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
   // Change this with the extensions you are going to use.
-  content: [
-    "./src/**/*.{html,js,jsx,md,mdx,svelte,ts,tsx,vue,svg}",
-  ],
+  content: ["./src/**/*.{html,js,jsx,md,mdx,svelte,ts,tsx,vue,svg}"],
   theme: {
     screens: {
       // These are the default media queries.
@@ -22,12 +20,12 @@ export default {
     extend: {
       keyframes: {
         "accordion-down": {
-          from: { height: '0' },
+          from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: '0' },
+          to: { height: "0" },
         },
       },
       animation: {
