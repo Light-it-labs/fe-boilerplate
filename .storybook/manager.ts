@@ -5,6 +5,6 @@ import DefaultTheme from "./theme";
 addons.setConfig({
   theme: DefaultTheme,
   sidebar: {
-    showRoots: false,
+    showRoots: true,
   },
 });
