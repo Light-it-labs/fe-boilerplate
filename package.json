@@ -22,7 +22,8 @@
     "build-staging": "pnpm with-env-staging vite build",
     "build-production": "pnpm with-env-production vite build",
     "with-env-staging": "dotenv -e ./.env.staging --",
-    "with-env-production": "dotenv -e ./.env.production --"
+    "with-env-production": "dotenv -e ./.env.production --",
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
@@ -91,6 +92,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-storybook": "^0.8.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
@@ -107,5 +110,11 @@
       },
       "autoprefixer": {}
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "pretty-quick --staged",
+      "eslint --fix"
+    ]
   }
 }
