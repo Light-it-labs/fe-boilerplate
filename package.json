@@ -15,10 +15,14 @@
     "storybook": "storybook dev -p 6969",
     "build-storybook": "storybook build",
     "lint": "eslint .",
-    "lint:fix": "pnpm lint --fix",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
+    "format:fix": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
     "type-check": "tsc --noEmit",
-    "with-env": "dotenv -e ./.env --"
+    "with-env": "dotenv -e ./.env --",
+    "build-staging": "pnpm with-env-staging vite build",
+    "build-production": "pnpm with-env-production vite build",
+    "with-env-staging": "dotenv -e ./.env.staging --",
+    "with-env-production": "dotenv -e ./.env.production --"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
@@ -26,6 +30,8 @@
     "@heroicons/react": "^2.1.1",
     "@hookform/resolvers": "^3.3.4",
     "@react-oauth/google": "^0.12.1",
+    "@sentry/react": "^7.91.0",
+    "@sentry/vite-plugin": "^2.10.2",
     "@tanstack/react-query": "^5.25.0",
     "@tanstack/react-query-devtools": "^5.25.0",
     "axios": "^1.6.7",

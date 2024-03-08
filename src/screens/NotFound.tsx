@@ -12,9 +12,11 @@ export const NotFound = () => {
       <div className="mb-20">
         <img src={LightitLogo} alt="logo" />
       </div>
+
       <p className="mb-10 text-2xl">
         Looks like the page you are trying to access does not exist.
       </p>
+
       <Button
         variant="primary"
         size="sm"

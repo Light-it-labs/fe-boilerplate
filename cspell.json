@@ -1,7 +1,5 @@
 {
-  "enableFiletypes": [
-    "astro"
-  ],
+  "enableFiletypes": ["astro"],
   "ignorePaths": [
     "*node_modules",
     "*tsconfig.tsbuildinfo",
