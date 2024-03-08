@@ -19,11 +19,11 @@
     "format:fix": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
     "type-check": "tsc --noEmit",
     "with-env": "dotenv -e ./.env --",
-
     "build-staging": "pnpm with-env-staging vite build",
     "build-production": "pnpm with-env-production vite build",
     "with-env-staging": "dotenv -e ./.env.staging --",
-    "with-env-production": "dotenv -e ./.env.production --"
+    "with-env-production": "dotenv -e ./.env.production --",
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -92,9 +92,12 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^0.6.15",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.4",
+    "pretty-quick": "^4.0.0",
     "storybook": "^7.5.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
@@ -108,5 +111,11 @@
       },
       "autoprefixer": {}
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "pretty-quick --staged",
+      "eslint --fix"
+    ]
   }
 }
