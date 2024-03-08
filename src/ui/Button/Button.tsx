@@ -9,7 +9,6 @@ export const buttonVariants = [
   "outline",
   "outline-white",
   "secondary",
-  "secondary-link",
   "tertiary-link",
 ] as const;
 export type ButtonVariant = (typeof buttonVariants)[number];
