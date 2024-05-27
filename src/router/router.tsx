@@ -28,11 +28,10 @@ export const Router = () => {
       {/* PRIVATE ONLY ROUTES */}
       {userState === "loggedIn" && (
         <>
-          <Route element={<Navigate to={ROUTES.home} />} path={"*"} />
-          <Route path="*" element={<NotFound />} />
           <Route element={<Layout />}>
             <Route element={<Home />} path={ROUTES.home} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </>
       )}
     </Routes>
