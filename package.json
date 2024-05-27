@@ -26,7 +26,7 @@
     "prepare": "husky || true"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
+    "@headlessui/react": "^2.0.4",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.1.1",
     "@hookform/resolvers": "^3.3.4",
