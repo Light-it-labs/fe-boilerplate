@@ -30,7 +30,6 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "^2.1.1",
     "@hookform/resolvers": "^3.3.4",
-    "@react-oauth/google": "^0.12.1",
     "@sentry/react": "^7.91.0",
     "@sentry/vite-plugin": "^2.10.2",
     "@tanstack/react-query": "^5.25.0",
