@@ -7,11 +7,8 @@ on:
 
 jobs:
   set-title:
-<<<<<<< Updated upstream
-=======
-    if: ${{ github.actor != 'dependabot[bot]' }}
     name: Set PR Titles
->>>>>>> Stashed changes
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: Set PR title
