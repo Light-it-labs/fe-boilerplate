@@ -19,7 +19,7 @@ jobs:
             const body = pr.body;
             const branchName = pr.head.ref;
             const [type, id, description] = branchName.split('/');
-            const title = `[${type.toUpperCase()}][${id}] ${description.split("-").join(' ')}`;
+            const title = `[${type.toUpperCase()}][${id}] ${ description ? description?.split("-").join(' ') : null}`;
 
             const format = (str, ...args) => {
               return str.replace(/{(\d+)}/g, (match, number) => {
