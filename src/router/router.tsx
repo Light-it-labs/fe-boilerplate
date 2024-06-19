@@ -4,7 +4,6 @@ import type { Location } from "react-router-dom";
 import { Layout } from "~/layout";
 import { Home, Login, NotFound } from "~/screens";
 import { useUserStore } from "~/stores";
-import { ModalRouter } from "./ModalRouter";
 import { ROUTES } from "./routes";
 
 export const Router = () => {
@@ -18,35 +17,23 @@ export const Router = () => {
   );
 
   return (
-    <>
-      <Routes location={previousLocation ?? location}>
-        {/* PUBLIC ONLY ROUTES */}
-        {userState === "loggedOut" && (
-          <>
-            <Route
-              element={<Navigate to={ROUTES.login} replace />}
-              path={"*"}
-            />
-            <Route element={<Login />} path={ROUTES.login} />
-          </>
-        )}
-        {/* PRIVATE ONLY ROUTES */}
-        {userState === "loggedIn" && (
-          <>
-            <Route element={<Navigate to={ROUTES.home} />} path={"*"} />
-            <Route path="*" element={<NotFound />} />
-            <Route element={<Layout />}>
-              <Route element={<Home />} path={ROUTES.home} />
-            </Route>
-          </>
-        )}
-      </Routes>
-      <Routes>
-        <Route
-          path="*"
-          element={<ModalRouter showModal={!!previousLocation} />}
-        />
-      </Routes>
-    </>
+    <Routes location={previousLocation ?? location}>
+      {/* PUBLIC ONLY ROUTES */}s
+      {userState === "loggedOut" && (
+        <>
+          <Route element={<Navigate to={ROUTES.login} replace />} path={"*"} />
+          <Route element={<Login />} path={ROUTES.login} />
+        </>
+      )}
+      {/* PRIVATE ONLY ROUTES */}
+      {userState === "loggedIn" && (
+        <>
+          <Route element={<Layout />}>
+            <Route element={<Home />} path={ROUTES.home} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </>
+      )}
+    </Routes>
   );
 };

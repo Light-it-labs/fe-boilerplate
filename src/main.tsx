@@ -1,5 +1,5 @@
-import { StrictMode, useEffect } from "react";
-import * as Sentry from "@sentry/react";
+import { StrictMode } from "react";
+// import * as Sentry from "@sentry/react";
 import {
   QueryCache,
   QueryClient,
@@ -8,19 +8,12 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRoot } from "react-dom/client";
 
-import { ErrorBoundaryFallback } from "./screens/ErrorBoundaryFallback";
+// import { ErrorBoundaryFallback } from "./screens/ErrorBoundaryFallback";
 
 import "./index.css";
 
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import ReactDOM from "react-dom";
-import {
-  BrowserRouter,
-  createRoutesFromChildren,
-  matchRoutes,
-  useLocation,
-  useNavigationType,
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { z } from "zod";
 
 import { Toasts, useToastStore } from "./components";
@@ -63,7 +56,8 @@ if (!root) {
   );
 }
 
-Sentry.init({
+// Enable this if needed
+/* Sentry.init({
   dsn: env.VITE_SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({
@@ -93,20 +87,18 @@ Sentry.init({
   // plus for 100% of sessions with an error
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
-});
+}); */
 
 createRoot(root).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <GoogleOAuthProvider clientId={env.VITE_GOOGLE_AUTH_SSO_CLIENT_ID}>
-        <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </Sentry.ErrorBoundary>
+      {/* <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}> */}
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+      {/* </Sentry.ErrorBoundary> */}
 
-        {ReactDOM.createPortal(<Toasts />, document.body)}
-      </GoogleOAuthProvider>
+      {ReactDOM.createPortal(<Toasts />, document.body)}
 
       {isLocal && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
