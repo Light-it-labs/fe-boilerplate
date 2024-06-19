@@ -381,7 +381,6 @@ packages:
       browserslist: 4.23.0
       lru-cache: 5.1.1
       semver: 6.3.1
-    dev: true
 
   /@babel/helper-create-class-features-plugin@7.22.15(@babel/core@7.23.2):
     resolution: {integrity: sha512-jKkwA59IXcvSaiK2UN45kKwSC9o+KuoXsBDvHvU/7BecYIp8GQ2UwrVvFgJASUT+hBnwJx6MhvMCuMzwZZ7jlg==}
@@ -711,7 +710,7 @@ packages:
     resolution: {integrity: sha512-SOSkfJDddaM7mak6cPEpswyTRnuRltl429hMraQEglW+OkovnCzsiszTmsrlY//qLFjCpQDFRvjdm2wA5pPm9w==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
-      "@babel/core": ^7.0.0-0
+      '@babel/core': ^7.0.0
     dependencies:
       '@babel/core': 7.23.2
     dev: true
@@ -2861,9 +2860,9 @@ packages:
       '@types/react': 18.2.64
       '@types/react-dom': 18.2.21
       aria-hidden: 1.2.3
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-remove-scroll: 2.5.5(@types/react@18.2.64)(react@18.2.0)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-remove-scroll: 2.5.5(@types/react@18.3.2)(react@18.3.1)
     dev: true
 
   /@radix-ui/react-separator@1.0.3(@types/react-dom@18.2.21)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0):
@@ -3785,7 +3784,7 @@ packages:
       express: 4.19.2
       find-cache-dir: 3.3.2
       fs-extra: 11.1.1
-      magic-string: 0.30.5
+      magic-string: 0.30.8
       rollup: 3.29.4
       typescript: 5.4.2
       vite: 5.1.7(@types/node@20.11.25)(less@4.2.0)
@@ -5300,7 +5299,7 @@ packages:
       '@typescript-eslint/types': 6.21.0
       '@typescript-eslint/typescript-estree': 6.21.0(typescript@5.4.2)
       eslint: 8.57.0
-      semver: 7.5.4
+      semver: 7.6.2
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -5319,7 +5318,6 @@ packages:
       '@typescript-eslint/types': 7.1.1
       '@typescript-eslint/typescript-estree': 7.1.1(typescript@5.4.2)
       eslint: 8.57.0
-      semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -6125,7 +6123,6 @@ packages:
       electron-to-chromium: 1.4.698
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
-    dev: true
 
   /bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
@@ -7194,11 +7191,11 @@ packages:
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
     engines: {node: '>=4'}
     peerDependencies:
-      "@typescript-eslint/parser": "*"
-      eslint: "*"
-      eslint-import-resolver-node: "*"
-      eslint-import-resolver-typescript: "*"
-      eslint-import-resolver-webpack: "*"
+      '@typescript-eslint/parser': '*'
+      eslint: '*'
+      eslint-import-resolver-node: '*'
+      eslint-import-resolver-typescript: '*'
+      eslint-import-resolver-webpack: '*'
     peerDependenciesMeta:
       '@typescript-eslint/parser':
         optional: true
@@ -10132,7 +10129,7 @@ packages:
       mime-types: 2.1.35
       progress: 2.0.3
       proxy-from-env: 1.1.0
-      rimraf: 2.7.1
+      rimraf: 2.6.3
       ws: 6.2.2
     transitivePeerDependencies:
       - bufferutil
@@ -10205,7 +10202,7 @@ packages:
   /react-docgen-typescript@2.2.2(typescript@5.4.2):
     resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
     peerDependencies:
-      typescript: ">= 4.3.x"
+      typescript: '>= 4.3.x'
     dependencies:
       typescript: 5.4.5
     dev: true
