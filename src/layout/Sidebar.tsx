@@ -6,8 +6,6 @@ import { twMerge as tw } from "tailwind-merge";
 
 import { ROUTES } from "~/router";
 
-const navigation = [{ name: "Home", href: ROUTES.home, icon: HomeIcon }];
-
 export interface SidebarProps {
   show: boolean;
   onClose: () => void;
@@ -16,6 +14,7 @@ export interface SidebarProps {
 export const Sidebar = ({ show, onClose }: SidebarProps) => {
   const location = useLocation();
   const current = location.pathname;
+  const navigation = [{ name: "Home", href: ROUTES.home, icon: HomeIcon }];
 
   return (
     <>
