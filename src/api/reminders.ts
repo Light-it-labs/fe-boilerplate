@@ -32,7 +32,7 @@ export const getReminderQuery = (id: string | null) => ({
 export const createReminder = {
   mutation: async (reminder: ReminderFormValues) => {
     const response = await api.post<Reminder>(
-      `/events`,
+      "/events",
       { ...reminder },
       {
         headers: getAuthHeaders(),
@@ -55,7 +55,7 @@ export const createReminder = {
 
 export const updateReminder = {
   mutation: async (reminder: Reminder) => {
-    const response = await api.put<Reminder>(`/events`, reminder, {
+    const response = await api.put<Reminder>("/events", reminder, {
       headers: getAuthHeaders(),
     });
     return response.data;

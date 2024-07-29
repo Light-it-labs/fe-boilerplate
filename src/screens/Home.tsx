@@ -1,10 +1,12 @@
+import React from "react";
+
 import { MODAL_ROUTES, useNavigateModal } from "~/router";
 import { Button } from "~/ui";
 
 export const Home = () => {
   const navigateModal = useNavigateModal();
   return (
-    <div className="prose p-10 lg:prose-xl">
+    <div className='prose p-10 lg:prose-xl'>
       <h1>Home Title</h1>
 
       <h2>HOME Subtitle</h2>

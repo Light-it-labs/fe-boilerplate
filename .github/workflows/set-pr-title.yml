@@ -16,30 +16,34 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { owner, repo, number: pull_number } = context.issue;
-            const pr = context.payload.pull_request;
-            const body = pr.body;
-            const branchName = pr.head.ref;
-            const [type, id, description] = branchName.split('/');
-            const title = `[${type.toUpperCase()}][${id}] ${ description ? description?.split("-").join(' ') : null}`;
+            try {
+              const { owner, repo, number: pull_number } = context.issue;
+              const pr = context.payload.pull_request;
+              const body = pr.body;
+              const branchName = pr.head.ref;
+              const [type, id, description] = branchName.split('/');
+              const title = `[${type.toUpperCase()}][${id}] ${ description ? description?.split("-").join(' ') : null}`;
 
-            const format = (str, ...args) => {
-              return str.replace(/{(\d+)}/g, (match, number) => {
-                return typeof args[number] !== 'undefined' ? args[number] : match;
+              const format = (str, ...args) => {
+                return str.replace(/{(\d+)}/g, (match, number) => {
+                  return typeof args[number] !== 'undefined' ? args[number] : match;
+                });
+              };
+
+              const templateTitle = description.split("-").join(' ').replace(/\b\w/g, function(l){ return l.toUpperCase() });
+              const taskCode = id.split("CU-").join('');
+              const isFeature = type === 'feature' ? 'x' : ' ';
+              const isBugfix = ["bugfix", "hotfix"].includes(type) ? 'x' : ' ';
+
+              const updatedBody = format(body, templateTitle, id, taskCode, isFeature, isBugfix);
+
+              await github.rest.pulls.update({
+                owner,
+                repo,
+                pull_number,
+                title,
+                body: updatedBody
               });
-            };
-
-            const templateTitle = description.split("-").join(' ').replace(/\b\w/g, function(l){ return l.toUpperCase() });
-            const taskCode = id.split("CU-").join('');
-            const isFeature = type === 'feature' ? 'x' : ' ';
-            const isBugfix = ["bugfix", "hotfix"].includes(type) ? 'x' : ' ';
-
-            const updatedBody = format(body, templateTitle, id, taskCode, isFeature, isBugfix);
-
-            await github.rest.pulls.update({
-              owner,
-              repo,
-              pull_number,
-              title,
-              body: updatedBody
-            });
+            } catch (error) {
+              console.log("Error setting PR title: ", error);
+            }
