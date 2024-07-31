@@ -1,8 +1,10 @@
 import axios from "axios";
 
 import { env } from "~/env";
-import { useUserStore } from "~/stores/useUserStore";
-import { errorResponseInterceptor } from "./interceptors";
+import {
+  authHeaderInterceptor,
+  errorResponseInterceptor,
+} from "./interceptors";
 
 export const api = axios.create({
   baseURL: env.VITE_API_URL,
@@ -11,13 +13,7 @@ export const api = axios.create({
   },
 });
 
-export const getAuthHeaders = () => {
-  const userToken = useUserStore.getState().token;
-
-  return {
-    Authorization: `Bearer ${userToken}`,
-  };
-};
+api.interceptors.request.use(authHeaderInterceptor);
 
 // interceptor was based on this article
 // https://dev.to/franciscomendes10866/how-to-use-axios-interceptors-b7d
