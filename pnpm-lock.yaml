@@ -9396,6 +9396,19 @@ packages:
       merge2: 1.4.1
       micromatch: 4.0.7
 
+  /fast-glob@3.3.2:
+    resolution:
+      {
+        integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==,
+      }
+    engines: { node: ">=8.6.0" }
+    dependencies:
+      "@nodelib/fs.stat": 2.0.5
+      "@nodelib/fs.walk": 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.7
+
   /fast-json-stable-stringify@2.1.0:
     resolution:
       {
@@ -12331,6 +12344,13 @@ packages:
       }
     engines: { node: ">=0.10.0" }
     dev: true
+
+  /path-key@3.1.1:
+    resolution:
+      {
+        integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==,
+      }
+    engines: { node: ">=8" }
 
   /path-key@3.1.1:
     resolution:
