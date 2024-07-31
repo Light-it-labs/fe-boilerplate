@@ -1,7 +1,7 @@
 import type { QueryClient } from "@tanstack/react-query";
 
 import type { ReminderFormValues } from "~/modals/Event";
-import { api, getAuthHeaders } from "./axios";
+import { api } from "./axios";
 
 const domain = "reminder";
 const ALL = "all";
@@ -31,22 +31,12 @@ export const getReminderQuery = (id: string | null) => ({
 
 export const createReminder = {
   mutation: async (reminder: ReminderFormValues) => {
-    const response = await api.post<Reminder>(
-      `/events`,
-      { ...reminder },
-      {
-        headers: getAuthHeaders(),
-      },
-    );
+    const response = await api.post<Reminder>(`/events`, { ...reminder });
     return response.data;
   },
   invalidates: (
     queryClient: QueryClient,
-    {
-      reminderId,
-    }: {
-      reminderId?: string;
-    },
+    { reminderId }: { reminderId?: string },
   ) => {
     void queryClient.invalidateQueries([domain, ALL]);
     void queryClient.invalidateQueries([domain, reminderId]);
@@ -55,18 +45,12 @@ export const createReminder = {
 
 export const updateReminder = {
   mutation: async (reminder: Reminder) => {
-    const response = await api.put<Reminder>(`/events`, reminder, {
-      headers: getAuthHeaders(),
-    });
+    const response = await api.put<Reminder>(`/events`, reminder);
     return response.data;
   },
   invalidates: (
     queryClient: QueryClient,
-    {
-      reminderId,
-    }: {
-      reminderId?: string;
-    },
+    { reminderId }: { reminderId?: string },
   ) => {
     void queryClient.invalidateQueries([domain, ALL]);
     void queryClient.invalidateQueries([domain, reminderId]);
@@ -75,9 +59,7 @@ export const updateReminder = {
 
 export const deleteReminder = {
   mutation: async (reminder: Reminder) => {
-    await api.delete<void>(`/events/${reminder.id}`, {
-      headers: getAuthHeaders(),
-    });
+    await api.delete<void>(`/events/${reminder.id}`);
   },
   invalidates: (queryClient: QueryClient, reminderId: string) => {
     void queryClient.invalidateQueries([domain, ALL]);
