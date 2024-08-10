@@ -1,3 +1,4 @@
+import React from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import type { Location } from "react-router-dom";
 
@@ -35,7 +36,7 @@ export const Router = () => {
           <Route element={<Layout />}>
             <Route element={<Home />} path={ROUTES.home} />
           </Route>
-          <Route path="*" element={<NotFound />} />
+          <Route path='*' element={<NotFound />} />
         </>
       )}
     </Routes>

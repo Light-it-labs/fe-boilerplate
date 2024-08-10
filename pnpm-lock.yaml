@@ -219,6 +219,9 @@ devDependencies:
   typescript:
     specifier: ^5.4.2
     version: 5.4.5
+  typescript-eslint:
+    specifier: ^7.17.0
+    version: 7.17.0(eslint@9.8.0)(typescript@5.4.5)
   vite:
     specifier: ^5.1.7
     version: 5.2.11(@types/node@20.12.12)(less@4.2.0)
@@ -2751,7 +2754,7 @@ packages:
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
     dependencies:
-      eslint: 8.57.0
+      eslint: 9.8.0
       eslint-visitor-keys: 3.4.3
     dev: true
 
@@ -2772,8 +2775,8 @@ packages:
     dependencies:
       ajv: 6.12.6
       debug: 4.3.4
-      espree: 9.6.1
-      globals: 13.24.0
+      espree: 10.1.0
+      globals: 14.0.0
       ignore: 5.3.1
       import-fresh: 3.3.0
       js-yaml: 4.1.0
@@ -6796,7 +6799,7 @@ packages:
       "@typescript-eslint/typescript-estree": 7.17.0(typescript@5.4.5)
       "@typescript-eslint/visitor-keys": 7.17.0
       debug: 4.3.4
-      eslint: 8.57.0
+      eslint: 9.8.0
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
@@ -6851,7 +6854,7 @@ packages:
       "@typescript-eslint/typescript-estree": 7.17.0(typescript@5.4.5)
       "@typescript-eslint/utils": 7.17.0(eslint@8.57.0)(typescript@5.4.5)
       debug: 4.3.4
-      eslint: 8.57.0
+      eslint: 9.8.0
       ts-api-utils: 1.3.0(typescript@5.4.5)
       typescript: 5.4.5
     transitivePeerDependencies:
@@ -8855,6 +8858,7 @@ packages:
     dependencies:
       ms: 2.1.3
     dev: true
+    optional: true
 
   /debug@4.3.4:
     resolution:
@@ -9693,7 +9697,7 @@ packages:
       array.prototype.findlastindex: 1.2.5
       array.prototype.flat: 1.3.2
       array.prototype.flatmap: 1.3.2
-      debug: 3.2.7
+      array.prototype.tosorted: 1.1.4
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
@@ -9863,7 +9867,6 @@ packages:
       chalk: 4.1.2
       cross-spawn: 7.0.3
       debug: 4.3.4
-      doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.2.2
       eslint-visitor-keys: 3.4.3
@@ -9871,16 +9874,13 @@ packages:
       esquery: 1.6.0
       esutils: 2.0.3
       fast-deep-equal: 3.1.3
-      file-entry-cache: 6.0.1
+      file-entry-cache: 8.0.0
       find-up: 5.0.0
       glob-parent: 6.0.2
-      globals: 13.24.0
-      graphemer: 1.4.0
       ignore: 5.3.1
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
-      js-yaml: 4.1.0
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
@@ -10184,7 +10184,7 @@ packages:
       }
     engines: { node: ^10.12.0 || >=12.0.0 }
     dependencies:
-      flat-cache: 3.2.0
+      flat-cache: 4.0.1
     dev: true
 
   /file-system-cache@2.3.0:
@@ -10332,7 +10332,6 @@ packages:
     dependencies:
       flatted: 3.3.1
       keyv: 4.5.4
-      rimraf: 3.0.2
     dev: true
 
   /flatted@3.3.1:
@@ -17090,7 +17089,3 @@ packages:
       react: 18.3.1
       use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
