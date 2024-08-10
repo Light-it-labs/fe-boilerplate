@@ -15,14 +15,13 @@ type EnvValues = z.infer<typeof envSchema>;
 
 // IDEA: trigger a toast message on dev instead of just a console error
 function logEnvError(errors: ZodError<EnvValues>) {
-  const { _errors, ...formattedErrors } = errors.format();
+  const { ...formattedErrors } = errors.format();
 
   console.error("<");
   console.error("ENVIRONMENT VARIABLES ERRORS:");
   console.error("----");
-  Object.entries(formattedErrors).forEach(([name, { _errors }]) => {
-    const errMsg = _errors.join(", ");
-    console.error(`"${name}": ${errMsg}`);
+  Object.entries(formattedErrors).forEach(([name]) => {
+    console.error(name);
   });
   console.error("----");
   console.error(">");

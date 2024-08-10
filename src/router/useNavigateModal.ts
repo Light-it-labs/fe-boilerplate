@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NavigateOptions } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -29,7 +30,7 @@ export const useNavigateModal = () => {
   ) => {
     navigate(to, {
       ...options,
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
       state: {
         ...options?.state,
         previousLocation: previousLocation ?? location,

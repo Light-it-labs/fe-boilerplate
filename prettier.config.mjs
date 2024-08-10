@@ -7,7 +7,7 @@ const config = {
   arrowParens: "always",
   printWidth: 80,
   singleQuote: false,
-  jsxSingleQuote: false,
+  jsxSingleQuote: true,
   semi: true,
   trailingComma: "all",
   tabWidth: 2,

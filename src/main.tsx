@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import React, { StrictMode } from "react";
 // import * as Sentry from "@sentry/react";
 import {
   QueryCache,
