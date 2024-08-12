@@ -1,5 +1,5 @@
+import React, { forwardRef } from "react";
 import type { ComponentProps, ElementRef } from "react";
-import { forwardRef } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 import { CloseIcon, tw } from "~/shared";
@@ -37,7 +37,7 @@ const CloseButton = forwardRef<
     {...props}
   >
     <CloseIcon />
-    <span className="sr-only">Close</span>
+    <span className='sr-only'>Close</span>
   </DialogPrimitive.Close>
 ));
 CloseButton.displayName = "Modal.CloseButton";

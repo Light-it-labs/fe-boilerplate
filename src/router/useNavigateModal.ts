@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NavigateOptions } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -17,7 +16,7 @@ export const useNavigateModal = () => {
     previousLocation?: Location;
   };
 
-  return <T extends string>(
+  return <T extends string, K>(
     // we make normal routing work as well as param routing, but make multiple params invalid
     to:
       | ValidModalUrl<T>
@@ -26,7 +25,7 @@ export const useNavigateModal = () => {
           search?: string;
           hash?: string;
         },
-    options?: NavigateOptions,
+    options?: Omit<NavigateOptions, "state"> & { state?: K },
   ) => {
     navigate(to, {
       ...options,

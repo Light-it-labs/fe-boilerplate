@@ -1,3 +1,5 @@
+import React from "react";
+
 import { tw } from "~/shared";
 
 export const IconWrapper = ({
