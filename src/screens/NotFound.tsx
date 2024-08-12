@@ -1,9 +1,7 @@
 import React from "react";
-import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 import { useNavigate } from "react-router-dom";
 
 import { LightitLogo } from "~/assets";
-import { Button } from "~/ui";
 
 export const NotFound = () => {
   const navigate = useNavigate();
@@ -17,16 +15,13 @@ export const NotFound = () => {
         Looks like the page you are trying to access does not exist.
       </p>
 
-      <Button
-        variant="primary"
-        size="sm"
-        left={<ArrowLeftIcon />}
+      <button
         onClick={() => {
           navigate(-1);
         }}
       >
         Go Back
-      </Button>
+      </button>
     </main>
   );
 };
