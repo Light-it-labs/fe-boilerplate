@@ -8613,10 +8613,9 @@ packages:
       }
     engines: { "0": node >= 0.8 }
     dependencies:
-      buffer-from: 1.1.2
-      inherits: 2.0.4
-      readable-stream: 2.3.8
-      typedarray: 0.0.6
+      no-case: 3.0.4
+      tslib: 2.6.2
+      upper-case: 2.0.2
     dev: true
 
   /constant-case@3.0.4:
