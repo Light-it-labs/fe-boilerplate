@@ -15,6 +15,7 @@
     "storybook": "storybook dev -p 6969",
     "build-storybook": "storybook build",
     "lint": "eslint .",
+    "gen:domain": "plop domain",
     "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
     "format:quick": "pretty-quick --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ./.gitignore",
     "type-check": "tsc --noEmit",

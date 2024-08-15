@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { useQuery } from "@tanstack/react-query";
 import { tv } from "tailwind-variants";
 import type { VariantProps } from "tailwind-variants";
 
@@ -8,7 +7,7 @@ const buttonVariants = tv({
   base: "focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   variants: {
     variant: {
-      default: "bg-purple-500 hover:bg-purple-700 ",
+      default: "bg-purple-500 hover:bg-purple-700",
       error: "bg-red-500 hover:bg-red-700",
       info: "bg-blue-500 hover:bg-blue-700",
       success: "bg-green-500 hover:bg-green-700",
@@ -28,8 +27,6 @@ const buttonVariants = tv({
     disabled: false,
   },
 });
-
-useQuery;
 
 export interface ButtonProps
   extends React.ComponentProps<"button">,
