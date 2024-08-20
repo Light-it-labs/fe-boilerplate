@@ -14,6 +14,7 @@ export interface UserToken {
 
 // refresh token was based on this article
 // https://dev.to/franciscomendes10866/how-to-use-axios-interceptors-b7d
+
 const refreshToken = async () => {
   let refreshWasSuccessful = false;
   try {

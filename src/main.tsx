@@ -12,11 +12,9 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { z } from "zod";
 
-import { Toasts, useToastStore } from "./components";
 import { env } from "./env";
 import { Router } from "./router";
 
@@ -30,9 +28,7 @@ const queryCache = !isLocal
       // here we set a generic error handler on dev mode
       onError: (e, query) => {
         const parsedError = errorSchema.safeParse(e);
-        const { pushToast } = useToastStore.getState();
-
-        void pushToast({
+        console.log({
           type: "error",
           title: "Error",
           message: `${query.queryKey[0] as string} error: ${
@@ -97,8 +93,6 @@ createRoot(root).render(
         <Router />
       </BrowserRouter>
       {/* </Sentry.ErrorBoundary> */}
-
-      {ReactDOM.createPortal(<Toasts />, document.body)}
 
       {isLocal && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>

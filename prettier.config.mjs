@@ -28,6 +28,7 @@ const config = {
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "4.4.0",
+  tailwindFunctions: ["tv"],
 };
 
 export default config;

@@ -1,4 +1,3 @@
-import tailwindcss from "@headlessui/tailwindcss";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
@@ -34,5 +33,5 @@ export default {
       },
     },
   },
-  plugins: [typography, forms, tailwindcss, animate],
+  plugins: [typography, forms, animate],
 } satisfies Config;

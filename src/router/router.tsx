@@ -19,7 +19,11 @@ export const Router = () => {
 
   return (
     <Routes location={previousLocation ?? location}>
-      {/* PUBLIC ONLY ROUTES */}s
+      {/* PUBLIC ONLY ROUTES */}
+
+      <Route element={<Layout />}>
+        <Route element={<Home />} path={ROUTES.home} />
+      </Route>
       {userState === "loggedOut" && (
         <>
           <Route element={<Navigate to={ROUTES.login} replace />} path={"*"} />
