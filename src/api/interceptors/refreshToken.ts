@@ -1,8 +1,8 @@
 import mem from "mem";
 
 import { useUserStore } from "~/stores/useUserStore";
-import { api, getAuthHeaders } from "../axios";
 import type { ServiceResponse } from "../axios";
+import { api } from "../axios";
 
 const { setUser, setToken } = useUserStore.getState();
 
@@ -21,9 +21,6 @@ const refreshToken = async () => {
     const response = await api.post<ServiceResponse<UserToken>>(
       "/auth/refresh",
       {},
-      {
-        headers: getAuthHeaders(),
-      },
     );
     const { data: userToken } = response.data;
     if (!userToken.refresh_token) {

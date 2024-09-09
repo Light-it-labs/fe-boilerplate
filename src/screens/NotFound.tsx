@@ -15,13 +15,16 @@ export const NotFound = () => {
         Looks like the page you are trying to access does not exist.
       </p>
 
-      <button
+      <Button
+        variant='primary'
+        size='sm'
+        left={<ArrowLeftIcon />}
         onClick={() => {
           navigate(-1);
         }}
       >
         Go Back
-      </button>
+      </Button>
     </main>
   );
 };
