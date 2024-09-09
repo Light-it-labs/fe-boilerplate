@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { LightitLogo } from "~/assets";
+import { Button } from "~/shared";
 
 export const NotFound = () => {
   const navigate = useNavigate();
@@ -16,9 +17,7 @@ export const NotFound = () => {
       </p>
 
       <Button
-        variant='primary'
         size='sm'
-        left={<ArrowLeftIcon />}
         onClick={() => {
           navigate(-1);
         }}

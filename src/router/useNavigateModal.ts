@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { NavigateOptions } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
