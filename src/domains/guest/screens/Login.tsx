@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LightitLogo } from "~/assets";
+import { LightitLogo } from "~/shared/assets";
 
 export const Login = () => {
   return (

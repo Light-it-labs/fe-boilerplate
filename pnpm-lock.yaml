@@ -78,6 +78,9 @@ devDependencies:
   "@ianvs/prettier-plugin-sort-imports":
     specifier: ^4.1.1
     version: 4.2.1(prettier@3.2.5)
+  "@sentry/types":
+    specifier: ^8.29.0
+    version: 8.29.0
   "@storybook/addon-a11y":
     specifier: ^7.6.17
     version: 7.6.19
@@ -4581,6 +4584,14 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 18.3.1
     dev: false
+
+  /@sentry/types@8.29.0:
+    resolution:
+      {
+        integrity: sha512-j4gX3ctzgD4xVWllXAhm6M+kHFEvrFoUPFq60X/pgkjsWCocGuhtNfB0rW43ICG8hCnlz8IYl7O7b8V8qY7SPg==,
+      }
+    engines: { node: ">=14.18" }
+    dev: true
 
   /@sentry/types@8.4.0:
     resolution:

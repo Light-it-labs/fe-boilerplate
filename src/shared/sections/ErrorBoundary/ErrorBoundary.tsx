@@ -2,7 +2,7 @@ import React from "react";
 
 import { LightitLogo } from "~/assets";
 
-export const ErrorBoundaryFallback = () => {
+export const ErrorBoundary = () => {
   return (
     <main className='flex h-screen flex-col items-center justify-center'>
       <div className='mb-20'>

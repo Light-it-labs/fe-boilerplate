@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { LightitLogo } from "~/assets";
-import { Button } from "~/shared";
+import { Button } from "~/components";
 
 export const NotFound = () => {
   const navigate = useNavigate();

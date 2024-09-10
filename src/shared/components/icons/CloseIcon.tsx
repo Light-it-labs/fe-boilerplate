@@ -1,6 +1,6 @@
 import React from "react";
 
-import type { SVGProps } from "~/constants";
+import type { SVGProps } from "~/config/constants";
 
 export const CloseIcon = ({ className, ...props }: SVGProps) => (
   <svg

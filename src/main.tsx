@@ -1,5 +1,6 @@
+import "~/config/scripts/sentry.js";
+
 import React, { StrictMode } from "react";
-// import * as Sentry from "@sentry/react";
 import {
   QueryCache,
   QueryClient,
@@ -12,7 +13,6 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import { BrowserRouter } from "react-router-dom";
 import { z } from "zod";
 
 import { env } from "./env";
@@ -20,7 +20,7 @@ import { Router } from "./router";
 
 const errorSchema = z.object({ message: z.string() });
 
-const isLocal = env.VITE_APP_ENV === "local";
+export const isLocal = env.VITE_APP_ENV === "local";
 
 const queryCache = !isLocal
   ? new QueryCache()
@@ -89,9 +89,7 @@ createRoot(root).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       {/* <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}> */}
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <Router />
       {/* </Sentry.ErrorBoundary> */}
 
       {isLocal && <ReactQueryDevtools initialIsOpen={false} />}

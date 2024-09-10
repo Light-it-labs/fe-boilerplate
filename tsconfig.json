@@ -9,6 +9,13 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
+      "~/assets": ["./shared/assets"],
+      "~/components": ["./shared/components/ui"],
+      "~/constants": ["./config/constants"],
+      "~/hooks": ["./shared/hooks"],
+      "~/icons": ["./shared/components/icons"],
+      "~/sections": ["./shared/sections"],
+      "~/utils": ["./shared/utils"],
       "~/*": ["*"]
     },
 
