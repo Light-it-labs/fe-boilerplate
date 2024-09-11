@@ -84,6 +84,12 @@ export default function (
         path: "src/domains/{{kebabCase name}}/index.ts",
         templateFile: "templates/domains/domain-barrel.ts.hbs",
       },
+      // Router
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/{{pascalCase name}}Router.tsx",
+        templateFile: "templates/domains/router.tsx.hbs",
+      },
     ],
   });
 }
