@@ -77,8 +77,14 @@ export default function (
       {
         type: "add",
         path: "src/domains/{{kebabCase name}}/api/index.ts",
-        templateFile: "templates/domains/domain-barrel.ts.hbs",
+        templateFile: "templates/domains/api/index.ts.hbs",
       },
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/api/{{kebabCase name}}.ts",
+        templateFile: "templates/domains/api/example.ts.hbs",
+      },
+      // Domain Barrel
       {
         type: "add",
         path: "src/domains/{{kebabCase name}}/index.ts",
