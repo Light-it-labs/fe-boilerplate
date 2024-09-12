@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Modal } from "~/shared";
+import { Button, Modal } from "~/components";
 
 export const Home = () => {
   const [isOpen, setIsOpen] = React.useState(false);

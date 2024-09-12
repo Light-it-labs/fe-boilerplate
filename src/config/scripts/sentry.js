@@ -9,8 +9,8 @@ import {
   useNavigationType,
 } from "react-router-dom";
 
+import { isLocal } from "~/constants";
 import { env } from "~/env";
-import { isLocal } from "~/main";
 
 if (isLocal) {
   Sentry.init({

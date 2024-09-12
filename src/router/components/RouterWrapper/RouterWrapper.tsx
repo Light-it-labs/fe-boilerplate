@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 import React from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { MainLayout } from "~/router/layouts";
 import { useUserStore } from "~/stores";
@@ -10,11 +10,6 @@ type Props = PropsWithChildren & {
 };
 
 export const RouterWrapper = ({ guest = false, children }: Props) => {
-  const location = useLocation();
-  const { previousLocation } = (location.state ?? {}) as {
-    previousLocation?: Location;
-  };
-
   const isAuthenticated = useUserStore((state) => state.token);
 
   if (!guest && !isAuthenticated) {
@@ -22,7 +17,7 @@ export const RouterWrapper = ({ guest = false, children }: Props) => {
   }
 
   return (
-    <Routes location={previousLocation ?? location}>
+    <Routes>
       <Route element={<MainLayout />}>{children}</Route>
     </Routes>
   );

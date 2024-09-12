@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { GuestRouter } from "~/domains";
 import { NotFound } from "~/sections";
@@ -7,8 +7,10 @@ import { NotFound } from "~/sections";
 export const Router = () => {
   return (
     <BrowserRouter>
-      <GuestRouter />
-      <Route path='*' element={<NotFound />} />
+      <GuestRouter />,
+      <Routes>
+        <Route path='*' element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 };

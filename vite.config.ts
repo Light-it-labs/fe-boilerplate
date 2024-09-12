@@ -34,7 +34,37 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
       origin: VITE_APP_ENV === "local" ? VITE_APP_URL : "",
     },
     resolve: {
-      alias: [{ find: "~", replacement: path.resolve(__dirname, "./src") }],
+      alias: [
+        {
+          find: "~/assets",
+          replacement: path.resolve(__dirname, "./src/shared/assets"),
+        },
+        {
+          find: "~/components",
+          replacement: path.resolve(__dirname, "./src/shared/components/ui"),
+        },
+        {
+          find: "~/constants",
+          replacement: path.resolve(__dirname, "./src/config/constants"),
+        },
+        {
+          find: "~/hooks",
+          replacement: path.resolve(__dirname, "./src/shared/hooks"),
+        },
+        {
+          find: "~/icons",
+          replacement: path.resolve(__dirname, "./src/shared/components/icons"),
+        },
+        {
+          find: "~/sections",
+          replacement: path.resolve(__dirname, "./src/shared/sections"),
+        },
+        {
+          find: "~/utils",
+          replacement: path.resolve(__dirname, "./src/shared/utils"),
+        },
+        { find: "~", replacement: path.resolve(__dirname, "./src") },
+      ],
     },
   };
 

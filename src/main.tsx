@@ -1,4 +1,4 @@
-import "~/config/scripts/sentry.js";
+//import "~/config/scripts/sentry.js";
 
 import React, { StrictMode } from "react";
 import {
@@ -15,12 +15,10 @@ import "./index.css";
 
 import { z } from "zod";
 
-import { env } from "./env";
+import { isLocal } from "~/constants";
 import { Router } from "./router";
 
 const errorSchema = z.object({ message: z.string() });
-
-export const isLocal = env.VITE_APP_ENV === "local";
 
 const queryCache = !isLocal
   ? new QueryCache()
