@@ -1,7 +1,7 @@
 import mem from "mem";
 
 import { useUserStore } from "~/stores/useUserStore";
-import type { ServiceResponse } from "../axios";
+import type { ServiceResponse } from "../api.types";
 import { api } from "../axios";
 
 const { setUser, setToken } = useUserStore.getState();

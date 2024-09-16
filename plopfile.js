@@ -35,6 +35,11 @@ export default function (
         path: "src/domains/{{kebabCase name}}/context/index.ts",
         templateFile: "templates/domains/context/index.ts.hbs",
       },
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/context/use{{pascalCase name}}Context.tsx",
+        templateFile: "templates/domains/context/context.hbs",
+      },
       // Sections
       {
         type: "add",
@@ -59,7 +64,7 @@ export default function (
       },
       {
         type: "add",
-        path: "src/domains/{{kebabCase name}}/queries/useSomethingQueryExample.tsx",
+        path: "src/domains/{{kebabCase name}}/queries/{{kebabCase name}}.tsx",
         templateFile: "templates/domains/queries/query-example.tsx.hbs",
       },
       // Screens

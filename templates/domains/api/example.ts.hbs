@@ -1,56 +1,55 @@
 import type { ServiceResponse } from "~/config/api";
 import { api } from "~/config/api";
 
-export interface BaseExample {
-  id: number;
+export interface Base{{pascalCase name}} {
+  id: string;
   name: string;
   address: string;
 }
 
-export const getAll{{pascalCase name}} = async () => {
-  const { data } = await api.get<ServiceResponse<BaseExample[]>>(
-    `/{{kebabCase name}}`,
-    {
-      params: {
-        page_size: 100,
-        page: 1,
-        order_by: "created_at",
-      },
-    },
+export interface Base{{pascalCase name}}ListParams {
+  page?: number;
+}
+
+const URL = "/{{kebabCase name}}";
+
+export const get{{pascalCase name}}List = async (params: Base{{pascalCase name}}ListParams) => {
+  const { data } = await api.get<ServiceResponse<Base{{pascalCase name}}[]>>(URL, {
+    params,
+  });
+
+  return data.data;
+};
+
+export const get{{pascalCase name}}Detail = async ({{camelCase name}}Id: string) => {
+  const { data } = await api.get<ServiceResponse<Base{{pascalCase name}}>>(
+    URL.concat(["/", {{camelCase name}}Id].join("")),
   );
 
   return data.data;
 };
 
-export const get{{pascalCase name}} = async (id: string) => {
-  const { data } = await api.get<ServiceResponse<BaseExample>>(
-    `/{{kebabCase name}}/${id}`,
-  );
-
-  return data.data;
-};
-
-export const create{{pascalCase name}} = async (body: Omit<BaseExample, "id">) => {
-  const { data } = await api.post<ServiceResponse<BaseExample>>(
-    `/{{kebabCase name}}`,
+export const create{{pascalCase name}} = async (body: Omit<Base{{pascalCase name}}, "id">) => {
+  const { data } = await api.post<ServiceResponse<Base{{pascalCase name}}>>(
+    URL,
     body,
   );
 
   return data.data;
 };
 
-export const update{{pascalCase name}} = async (body: BaseExample) => {
-  const { data } = await api.put<ServiceResponse<BaseExample>>(
-    `/{{kebabCase name}}/${body.id}`,
+export const update{{pascalCase name}} = async (body: Base{{pascalCase name}}) => {
+  const { data } = await api.put<ServiceResponse<Base{{pascalCase name}}>>(
+    URL.concat(["/", body.id].join("")),
     body,
   );
 
   return data.data;
 };
 
-export const delete{{pascalCase name}} = async (id: string) => {
+export const delete{{pascalCase name}} = async ({{camelCase name}}Id: string) => {
   const { data } = await api.delete<ServiceResponse<void>>(
-    `/{{kebabCase name}}/${id}`,
+    URL.concat(["/", {{camelCase name}}Id].join("")),
   );
 
   return data.status;
