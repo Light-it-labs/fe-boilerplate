@@ -6,14 +6,14 @@ export interface User {
   name: string;
 }
 
-export interface UserStoreState {
+export interface AuthStoreState {
   user: User | null;
   setUser(user: User | null): void;
   token: string | null;
   setToken(token: string | null): void;
 }
 
-export const useUserStore = create<UserStoreState>()(
+export const useAuthStore = create<AuthStoreState>()(
   persist(
     (set) => ({
       user: null,
@@ -26,7 +26,7 @@ export const useUserStore = create<UserStoreState>()(
       },
     }),
     {
-      name: "feedbackUserStore",
+      name: "feedbackAuthStore",
     },
   ),
 );
