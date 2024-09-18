@@ -1,3 +1,3 @@
 export * from "./Providers";
-export * from "./ReactQuery";
+export * from "./ReactQueryProvider";
 export * from "./SentryProvider";
