@@ -1,30 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { useEffect } from "react";
 import * as Sentry from "@sentry/react";
-import {
-  createRoutesFromChildren,
-  matchRoutes,
-  useLocation,
-  useNavigationType,
-} from "react-router-dom";
 
 import { isLocal } from "~/constants";
 import { env } from "~/env";
 
-if (isLocal) {
+if (!isLocal) {
   Sentry.init({
     dsn: env.VITE_SENTRY_DSN,
     integrations: [
-      Sentry.BrowserTracing({
-        routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-          useEffect,
-          useLocation,
-          useNavigationType,
-          createRoutesFromChildren,
-          matchRoutes,
-        ),
-      }),
+      Sentry.browserTracingIntegration(),
       Sentry.replayIntegration(),
     ],
 
