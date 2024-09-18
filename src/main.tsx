@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import { Providers } from "./providers";
+import { Providers } from "./config/providers";
 import { Router } from "./router";
 
 const root = document.getElementById("root");
