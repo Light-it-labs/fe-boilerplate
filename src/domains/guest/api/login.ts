@@ -2,16 +2,16 @@ import { api } from "~/config/api";
 import type { ServiceResponse } from "~/config/api";
 import { useAuthStore } from "~/stores";
 
-export interface UserToken {
+export type UserToken = {
   accessToken: string;
   tokenType: string;
   expiresIn: number;
-}
-export interface GoogleLoginRequest {
+};
+export type GoogleLoginRequest = {
   email: string;
   name: string;
   googleToken: string;
-}
+};
 
 // This is just an example of how we solve this in Lightranet, you should replace this with your own implementation
 export const googleLogin = async ({

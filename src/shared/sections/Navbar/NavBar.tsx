@@ -1,8 +1,8 @@
 import React from "react";
 
-export interface NavBarProps {
+export type NavBarProps = {
   setSidebarOpen?: (v: boolean) => void;
-}
+};
 
 export const Navbar = ({ setSidebarOpen }: NavBarProps) => {
   return (

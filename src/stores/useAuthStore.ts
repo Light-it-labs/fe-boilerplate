@@ -1,17 +1,17 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export interface User {
+export type User = {
   email: string;
   name: string;
-}
+};
 
-export interface AuthStoreState {
+export type AuthStoreState = {
   user: User | null;
   setUser(user: User | null): void;
   token: string | null;
   setToken(token: string | null): void;
-}
+};
 
 export const useAuthStore = create<AuthStoreState>()(
   persist(

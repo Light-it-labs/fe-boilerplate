@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-export interface BaseRoute {
+export type BaseRoute = {
   screen: FC;
   layout?: FC;
   path: string;
@@ -11,4 +11,4 @@ export interface BaseRoute {
   // Redirecting purposes
   guest: boolean;
   permissions: string[];
-}
+};

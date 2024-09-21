@@ -28,11 +28,10 @@ const buttonVariants = tv({
   },
 });
 
-export interface ButtonProps
-  extends React.ComponentProps<"button">,
-    VariantProps<typeof buttonVariants> {
+export type ButtonProps = {
   asChild?: boolean;
-}
+} & React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants>;
 
 const Button = React.forwardRef<React.ElementRef<"button">, ButtonProps>(
   ({ className, variant, size, disabled, asChild = false, ...props }, ref) => {

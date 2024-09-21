@@ -34,7 +34,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["./"],
+  "include": ["./src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }
