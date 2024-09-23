@@ -13,30 +13,34 @@ import {
   update{{pascalCase name}},
 } from "../api/{{kebabCase name}}";
 
-export const {{camelCase name}}Keys = createQueryKeys("{{camelCase name}}", {
-  list: null,
+const {{camelCase name}}Keys = createQueryKeys("{{camelCase name}}", {
+  list: {
+    queryKey: null,
+    queryFn: () => get{{pascalCase name}}List,
+  },
   detail: ({{camelCase name}}Id: string) => ({
     queryKey: [{{camelCase name}}Id],
     queryFn: () => get{{pascalCase name}}Detail({{camelCase name}}Id),
   }),
 });
 
-export const use{{pascalCase name}} = () => {
+const use{{pascalCase name}}ListQuery = (params: Base{{pascalCase name}}ListParams) =>
+useQuery({
+  ...{{camelCase name}}Keys.list,
+  queryFn: () => get{{pascalCase name}}List(params),
+});
+
+const use{{pascalCase name}}DetailQuery = ({{camelCase name}}Id: string) =>
+  useQuery({{camelCase name}}Keys.detail({{camelCase name}}Id));
+
+const usePrefetch{{pascalCase name}}DetailQuery = ({{camelCase name}}Id: string) => {
   const queryClient = useQueryClient();
+  return queryClient.prefetchQuery({{camelCase name}}Keys.detail({{camelCase name}}Id));
+}
 
-  const use{{pascalCase name}}List = (params: Base{{pascalCase name}}ListParams) =>
-    useQuery({
-      ...{{camelCase name}}Keys.list,
-      queryFn: () => get{{pascalCase name}}List(params),
-    });
-
-  const use{{pascalCase name}}Detail = ({{camelCase name}}Id: string) =>
-    useQuery({{camelCase name}}Keys.detail({{camelCase name}}Id));
-
-  const usePrefetch{{pascalCase name}}Detail = ({{camelCase name}}Id: string) =>
-    queryClient.prefetchQuery({{camelCase name}}Keys.detail({{camelCase name}}Id));
-
-  const useCreate{{pascalCase name}} = useMutation({
+const useCreate{{pascalCase name}}Mutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
     mutationFn: create{{pascalCase name}},
     onSuccess: (new{{pascalCase name}}) => {
       queryClient.setQueryData(
@@ -49,8 +53,10 @@ export const use{{pascalCase name}} = () => {
       });
     },
   });
-
-  const useUpdate{{pascalCase name}} = useMutation({
+}
+const useUpdate{{pascalCase name}}Mutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
     mutationFn: update{{pascalCase name}},
     onMutate: async (new{{pascalCase name}}) => {
       // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
@@ -87,8 +93,11 @@ export const use{{pascalCase name}} = () => {
       });
     },
   });
+}
 
-  const useDelete{{pascalCase name}} = useMutation({
+const useDelete{{pascalCase name}}Mutation = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
     mutationFn: delete{{pascalCase name}},
     onMutate: async ({{camelCase name}}Id) => {
       // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
@@ -121,13 +130,15 @@ export const use{{pascalCase name}} = () => {
       });
     },
   });
+}
 
-  return {
-    use{{pascalCase name}}List,
-    use{{pascalCase name}}Detail,
-    usePrefetch{{pascalCase name}}Detail,
-    useCreate{{pascalCase name}},
-    useUpdate{{pascalCase name}},
-    useDelete{{pascalCase name}},
-  };
+
+
+export {
+  use{{pascalCase name}}ListQuery,
+  use{{pascalCase name}}DetailQuery,
+  usePrefetch{{pascalCase name}}DetailQuery,
+  useCreate{{pascalCase name}}Mutation,
+  useUpdate{{pascalCase name}}Mutation,
+  useDelete{{pascalCase name}}Mutation,
 };
