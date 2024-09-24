@@ -13,6 +13,8 @@ export const api = axios.create({
   },
 });
 
+export const aTest = "asdf";
+
 api.interceptors.request.use(authHeaderInterceptor);
 
 // interceptor was based on this article
