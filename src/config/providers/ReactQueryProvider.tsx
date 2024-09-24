@@ -12,7 +12,7 @@ import { isLocal } from "~/constants";
 
 const errorSchema = z.object({ message: z.string() });
 
-const queryCache = !isLocal
+const queryCache = isLocal
   ? new QueryCache()
   : new QueryCache({
       // here we set a generic error handler on dev mode
