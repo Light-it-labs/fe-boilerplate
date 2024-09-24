@@ -22,7 +22,7 @@ const queryCache = isLocal
           type: "error",
           title: "Error",
           message: `${query.queryKey[0] as string} error: ${
-            !parsedError.success
+            parsedError.success
               ? "Whoops! please check the network tab in the dev tools"
               : parsedError.data.message
           }`,
