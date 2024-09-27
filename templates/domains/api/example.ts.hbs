@@ -15,8 +15,8 @@
  */
 import { z } from "zod";
 
-import type { ServiceResponse } from "~/config/api";
-import { api } from "~/config/api";
+import type { ServiceResponse } from "~/api";
+import { api } from "~/api";
 import { create{{camelCase name}}Schema, {{camelCase name}}Schema } from "./schemas";
 
 export type {{pascalCase name}} = z.infer<typeof {{camelCase name}}Schema>;

@@ -1,11 +1,11 @@
-import "~/config/scripts/sentry";
+import "~/config/providers/scripts/sentry";
 
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import { Providers } from "./config/providers";
+import { Providers } from "./providers";
 import { Router } from "./router";
 
 const root = document.getElementById("root");

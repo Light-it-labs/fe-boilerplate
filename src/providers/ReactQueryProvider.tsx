@@ -8,7 +8,7 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { z } from "zod";
 
-import { isLocal } from "~/constants";
+import { isLocal } from "~/config";
 
 const errorSchema = z.object({ message: z.string() });
 

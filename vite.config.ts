@@ -44,10 +44,6 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
           replacement: path.resolve(__dirname, "./src/shared/components/ui"),
         },
         {
-          find: "~/constants",
-          replacement: path.resolve(__dirname, "./src/config/constants"),
-        },
-        {
           find: "~/hooks",
           replacement: path.resolve(__dirname, "./src/shared/hooks"),
         },

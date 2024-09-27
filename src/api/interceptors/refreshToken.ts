@@ -4,7 +4,7 @@ import { useAuthStore } from "~/stores";
 import type { ServiceResponse } from "../api.types";
 import { api } from "../axios";
 
-const { setUser, setToken } = useAuthStore.getState();
+const { setToken } = useAuthStore.getState();
 
 export interface UserToken {
   refresh_token: string;
@@ -24,14 +24,12 @@ const refreshToken = async () => {
     );
     const { data: userToken } = response.data;
     if (!userToken.refresh_token) {
-      setUser(null);
       setToken(null);
     } else {
       refreshWasSuccessful = true;
       setToken(userToken.refresh_token);
     }
   } catch (error) {
-    setUser(null);
     setToken(null);
   }
   return refreshWasSuccessful;
