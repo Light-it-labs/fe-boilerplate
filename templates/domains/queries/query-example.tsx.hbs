@@ -2,32 +2,32 @@ import { createQueryKeys } from "@lukemorales/query-key-factory";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import type {
-  Base{{pascalCase name}},
-  Base{{pascalCase name}}ListParams,
+  {{pascalCase name}},
+  {{pascalCase name}}ListParams,
 } from "../api/{{kebabCase name}}";
 import {
   create{{pascalCase name}},
   delete{{pascalCase name}},
-  get{{pascalCase name}}Detail,
-  get{{pascalCase name}}List,
+  get{{pascalCase name}}ById,
+  get{{pascalCase name}},
   update{{pascalCase name}},
 } from "../api/{{kebabCase name}}";
 
 const {{camelCase name}}Keys = createQueryKeys("{{camelCase name}}", {
   list: {
     queryKey: null,
-    queryFn: () => get{{pascalCase name}}List,
+    queryFn: () => get{{pascalCase name}},
   },
   detail: ({{camelCase name}}Id: string) => ({
     queryKey: [{{camelCase name}}Id],
-    queryFn: () => get{{pascalCase name}}Detail({{camelCase name}}Id),
+    queryFn: () => get{{pascalCase name}}ById({{camelCase name}}Id),
   }),
 });
 
-const use{{pascalCase name}}ListQuery = (params: Base{{pascalCase name}}ListParams) =>
+const use{{pascalCase name}}Query = (params: {{pascalCase name}}ListParams) =>
 useQuery({
   ...{{camelCase name}}Keys.list,
-  queryFn: () => get{{pascalCase name}}List(params),
+  queryFn: () => get{{pascalCase name}}(params),
 });
 
 const use{{pascalCase name}}DetailQuery = ({{camelCase name}}Id: string) =>
@@ -44,7 +44,7 @@ const useCreate{{pascalCase name}}Mutation = () => {
     mutationFn: create{{pascalCase name}},
     onSuccess: (new{{pascalCase name}}) => {
       queryClient.setQueryData(
-        {{camelCase name}}Keys.detail(new{{pascalCase name}}.id).queryKey,
+        {{camelCase name}}Keys.detail(new{{pascalCase name}}.data.id).queryKey,
         new{{pascalCase name}},
       );
 
@@ -84,7 +84,7 @@ const useUpdate{{pascalCase name}}Mutation = () => {
     },
     onSuccess: (new{{pascalCase name}}) => {
       queryClient.setQueryData(
-        {{camelCase name}}Keys.detail(new{{pascalCase name}}.id).queryKey,
+        {{camelCase name}}Keys.detail(new{{pascalCase name}}.data.id).queryKey,
         new{{pascalCase name}},
       );
 
@@ -111,8 +111,8 @@ const useDelete{{pascalCase name}}Mutation = () => {
       // Optimistically update to the new value
       queryClient.setQueryData(
         {{camelCase name}}Keys.detail({{camelCase name}}Id).queryKey,
-        (old: Base{{pascalCase name}}[]) =>
-          old.filter((t: Base{{pascalCase name}}) => t.id !== {{camelCase name}}Id),
+        (old: {{pascalCase name}}[]) =>
+          old.filter((t: {{pascalCase name}}) => t.id !== {{camelCase name}}Id),
       );
 
       // Return a context object with the snapshotted value
@@ -135,7 +135,7 @@ const useDelete{{pascalCase name}}Mutation = () => {
 
 
 export {
-  use{{pascalCase name}}ListQuery,
+  use{{pascalCase name}}Query,
   use{{pascalCase name}}DetailQuery,
   usePrefetch{{pascalCase name}}DetailQuery,
   useCreate{{pascalCase name}}Mutation,
