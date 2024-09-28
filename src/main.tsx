@@ -6,6 +6,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { I18nProvider } from "react-aria-components";
 import { createRoot } from "react-dom/client";
 
 // import { ErrorBoundaryFallback } from "./screens/ErrorBoundaryFallback";
@@ -87,14 +88,16 @@ if (!root) {
 
 createRoot(root).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      {/* <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}> */}
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-      {/* </Sentry.ErrorBoundary> */}
+    <I18nProvider locale='en-US'>
+      <QueryClientProvider client={queryClient}>
+        {/* <Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}> */}
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+        {/* </Sentry.ErrorBoundary> */}
 
-      {isLocal && <ReactQueryDevtools initialIsOpen={false} />}
-    </QueryClientProvider>
+        {isLocal && <ReactQueryDevtools initialIsOpen={false} />}
+      </QueryClientProvider>
+    </I18nProvider>
   </StrictMode>,
 );

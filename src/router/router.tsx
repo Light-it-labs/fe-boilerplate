@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import type { Location } from "react-router-dom";
 
 import { Layout } from "~/layout";
-import { Home, Login, NotFound } from "~/screens";
+import { Home, Login, NotFound, Playground } from "~/screens";
 import { useUserStore } from "~/stores";
 import { ROUTES } from "./routes";
 
@@ -23,6 +23,7 @@ export const Router = () => {
 
       <Route element={<Layout />}>
         <Route element={<Home />} path={ROUTES.home} />
+        <Route element={<Playground />} path={ROUTES.playground} />
       </Route>
       {userState === "loggedOut" && (
         <>
