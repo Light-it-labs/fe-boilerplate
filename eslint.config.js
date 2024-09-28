@@ -1,27 +1,20 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
+import { fixupPluginRules } from "@eslint/compat";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import vercelBrowser from "@vercel/style-guide/eslint/browser";
+import vercelReact from "@vercel/style-guide/eslint/react";
 import _import from "eslint-plugin-import";
 import globals from "globals";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
 
 export default [
   {
     ignores: [
       "**/eslint.config.mjs",
+      "**/plopfile.js",
       "**/*.config.js",
+      "**/*.config.ts",
       "**/*.config.cjs",
+      "**/*.config.mjs",
       "node_modules/",
       "**/vendor/",
       "public/build/",
@@ -29,18 +22,10 @@ export default [
       "**/reports/",
     ],
   },
-  ...fixupConfigRules(
-    compat.extends(
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended-type-checked",
-      "plugin:@typescript-eslint/stylistic-type-checked",
-      "plugin:jsx-a11y/recommended",
-      "plugin:react-hooks/recommended",
-      "plugin:react/recommended",
-    ),
-  ),
   {
     plugins: {
+      browser: fixupPluginRules(vercelBrowser),
+      react: fixupPluginRules(vercelReact),
       "@typescript-eslint": fixupPluginRules(typescriptEslint),
       import: fixupPluginRules(_import),
     },
@@ -59,30 +44,15 @@ export default [
       parser: tsParser,
       ecmaVersion: 5,
       sourceType: "script",
-
       parserOptions: {
         project: true,
-      },
-    },
-
-    settings: {
-      react: {
-        version: "detect",
       },
     },
 
     rules: {
       "react/prop-types": "off",
       "@typescript-eslint/unbound-method": "off",
-
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-        },
-      ],
-
+      "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
       "@typescript-eslint/consistent-type-imports": [
         "warn",
         {
@@ -90,7 +60,6 @@ export default [
           fixStyle: "separate-type-imports",
         },
       ],
-
       "@typescript-eslint/no-misused-promises": [
         2,
         {
@@ -99,11 +68,11 @@ export default [
           },
         },
       ],
-
-      "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
   {
+    // Rules for Storybook
     files: ["**/*.stories.*"],
     rules: {
       "react/react-in-jsx-scope": "off",

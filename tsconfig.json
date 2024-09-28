@@ -9,6 +9,12 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
+      "~/assets": ["./shared/assets"],
+      "~/components": ["./shared/components/ui"],
+      "~/hooks": ["./shared/hooks"],
+      "~/icons": ["./shared/components/icons"],
+      "~/sections": ["./shared/sections"],
+      "~/utils": ["./shared/utils"],
       "~/*": ["*"]
     },
 
@@ -27,7 +33,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["./"],
+  "include": ["./src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }
