@@ -1,10 +1,8 @@
 import mem from "mem";
 
-import { useAuthStore } from "~/stores";
+import { setToken } from "~/stores";
 import type { ServiceResponse } from "../api.types";
 import { api } from "../axios";
-
-const { setToken } = useAuthStore.getState();
 
 export interface UserToken {
   refresh_token: string;
