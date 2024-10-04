@@ -35,6 +35,11 @@ export default function (
         path: "src/domains/{{kebabCase name}}/context/index.ts",
         templateFile: "templates/domains/context/index.ts.hbs",
       },
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/context/use{{pascalCase name}}Context.tsx",
+        templateFile: "templates/domains/context/context.hbs",
+      },
       // Sections
       {
         type: "add",
@@ -59,7 +64,7 @@ export default function (
       },
       {
         type: "add",
-        path: "src/domains/{{kebabCase name}}/queries/useSomethingQueryExample.tsx",
+        path: "src/domains/{{kebabCase name}}/queries/{{kebabCase name}}.tsx",
         templateFile: "templates/domains/queries/query-example.tsx.hbs",
       },
       // Screens
@@ -77,12 +82,35 @@ export default function (
       {
         type: "add",
         path: "src/domains/{{kebabCase name}}/api/index.ts",
-        templateFile: "templates/domains/domain-barrel.ts.hbs",
+        templateFile: "templates/domains/api/index.ts.hbs",
       },
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/api/{{kebabCase name}}.ts",
+        templateFile: "templates/domains/api/example.ts.hbs",
+      },
+      // Schemas
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/api/schemas/index.ts",
+        templateFile: "templates/domains/api/schemas/index.hbs",
+      },
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/api/schemas/{{camelCase name}}Schemas.ts",
+        templateFile: "templates/domains/api/schemas/example.hbs",
+      },
+      // Domain Barrel
       {
         type: "add",
         path: "src/domains/{{kebabCase name}}/index.ts",
         templateFile: "templates/domains/domain-barrel.ts.hbs",
+      },
+      // Router
+      {
+        type: "add",
+        path: "src/domains/{{kebabCase name}}/{{pascalCase name}}Router.tsx",
+        templateFile: "templates/domains/router.tsx.hbs",
       },
     ],
   });
