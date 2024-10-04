@@ -3,6 +3,7 @@ import {
   CalendarGrid,
   CalendarGridBody,
   CalendarGridHeader,
+  CalendarGridProps,
   CalendarHeaderCell,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
@@ -18,9 +19,9 @@ const calendarTable = tv({
 
 const { root, dayOfWeek } = calendarTable();
 
-export function CalendarTable() {
+export function CalendarTable(props: CalendarGridProps) {
   return (
-    <CalendarGrid weekdayStyle='short' className={root()}>
+    <CalendarGrid weekdayStyle='short' className={root()} {...props}>
       <CalendarGridHeader>
         {(day) => (
           <CalendarHeaderCell className={dayOfWeek()}>{day}</CalendarHeaderCell>

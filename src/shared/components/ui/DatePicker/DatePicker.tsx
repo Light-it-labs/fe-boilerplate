@@ -18,6 +18,7 @@ import type { Control, FieldValues, Path } from "react-hook-form";
 import { useController } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
+import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
 
@@ -59,7 +60,7 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
     <AriaDatePicker
       {...props}
       onChange={(newDate) => {
-        field.onChange(newDate.toString());
+        field.onChange(newDate.toDate(currentTimezone).toISOString());
       }}
       onBlur={field.onBlur}
     >

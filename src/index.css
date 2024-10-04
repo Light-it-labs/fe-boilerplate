@@ -9,8 +9,7 @@
   font-smooth: never;
 }
 
-/* [data-testid="underlay"] {
+[data-testid="underlay"] {
   background: rgba(0, 0, 0, 0.4);
   z-index: 10;
-  backdrop-filter: blur(2px);
-} */
+}
