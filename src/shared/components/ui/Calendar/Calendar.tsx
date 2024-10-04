@@ -7,6 +7,7 @@ import { useController } from "react-hook-form";
 import type { Control, FieldValues, Path } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
+import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "./CalendarHeader";
 import { CalendarTable } from "./CalendarTable";
 
@@ -46,7 +47,7 @@ export const Calendar = <T extends DateValue, U extends FieldValues>({
         {...props}
         aria-labelledby={label}
         onChange={(newDate) => {
-          field.onChange(newDate.toString());
+          field.onChange(newDate.toDate(currentTimezone).toISOString());
         }}
         onFocusChange={field.onBlur}
         // TODO: ref={field.ref} Need to pass this down to CalendarTable to focus on error
