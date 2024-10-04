@@ -19,8 +19,8 @@ export const Sidebar = () => {
         <div className='flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4'>
           <div className='flex h-16 shrink-0 items-center'>
             <img
-              className='h-8 w-auto'
-              src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
+              className='h-6 w-auto'
+              src='https://tailwindcss.com/_next/static/media/tailwindcss-mark.3c5441fc7a190fb1800d4a5c7f07ba4b1345a9c8.svg'
               alt='Your Company'
             />
           </div>

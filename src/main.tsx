@@ -1,4 +1,4 @@
-import "~/config/providers/scripts/sentry";
+import "~/providers/sentry/sentry";
 
 import React, { StrictMode } from "react";
 import { I18nProvider } from "react-aria-components";
