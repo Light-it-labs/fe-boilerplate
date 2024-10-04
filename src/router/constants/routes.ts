@@ -1,5 +1,6 @@
 export const ROUTES = {
   home: "/",
+  playground: "/playground",
   login: "/login",
   example: "/example",
 } as const;

@@ -8,3 +8,8 @@
   -moz-osx-font-smoothing: grayscale;
   font-smooth: never;
 }
+
+[data-testid="underlay"] {
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}

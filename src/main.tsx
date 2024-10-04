@@ -1,6 +1,7 @@
-import "~/config/providers/scripts/sentry";
+import "~/providers/sentry/sentry";
 
 import React, { StrictMode } from "react";
+import { I18nProvider } from "react-aria-components";
 import { createRoot } from "react-dom/client";
 
 import "./index.css";
@@ -18,8 +19,11 @@ if (!root) {
 
 createRoot(root).render(
   <StrictMode>
-    <Providers>
-      <Router />
-    </Providers>
+    {/* // TODO: Move this to providers */}
+    <I18nProvider locale='en-US'>
+      <Providers>
+        <Router />
+      </Providers>
+    </I18nProvider>
   </StrictMode>,
 );
