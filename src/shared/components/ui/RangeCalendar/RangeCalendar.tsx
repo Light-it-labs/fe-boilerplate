@@ -17,12 +17,13 @@ import { CalendarTable } from "../Calendar/CalendarTable";
 const rangecalendar = tv({
   slots: {
     container: "w-full rounded-lg border bg-white p-5 md:w-fit",
+    calendars: "flex flex-col items-center space-y-6 md:flex-row md:space-x-6",
     error: "text-xs text-red-500",
     desc: "text-xs",
   },
 });
 
-const { container, error, desc } = rangecalendar();
+const { calendars, container, error, desc } = rangecalendar();
 
 interface RangeCalendarProps<T extends DateValue, U extends FieldValues>
   extends AriaRangeCalendarProps<T> {
@@ -59,7 +60,7 @@ export function RangeCalendar<T extends DateValue, U extends FieldValues>({
         className={container()}
       >
         <CalendarHeader />
-        <div className='flex items-center space-x-6'>
+        <div className={calendars()}>
           <CalendarTable />
           <CalendarTable offset={{ months: 1 }} />
         </div>

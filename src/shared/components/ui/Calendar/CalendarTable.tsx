@@ -12,7 +12,7 @@ import { tw } from "~/shared/utils";
 
 const calendarTable = tv({
   slots: {
-    root: "'w-full md:w-fit'",
+    root: "w-full md:w-fit",
     dayOfWeek: "pb-1 text-xs font-semibold capitalize text-slate-400",
   },
 });
