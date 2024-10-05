@@ -15,6 +15,11 @@
       "~/icons": ["./shared/components/icons"],
       "~/sections": ["./shared/sections"],
       "~/utils": ["./shared/utils"],
+      "~/api": ["./services/api"],
+      "~/monitoring": ["./services/monitoring"],
+      "~/query": ["./services/query"],
+      "~/router": ["./services/router"],
+      "~/stores": ["./services/stores"],
       "~/*": ["*"]
     },
 

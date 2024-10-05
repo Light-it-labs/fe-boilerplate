@@ -1,12 +1,13 @@
-import "~/config/providers/scripts/sentry";
+import "~/services/monitoring/SentryInit";
 
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import { Providers } from "./providers";
-import { Router } from "./router";
+import { SentryProvider } from "~/services/monitoring";
+import { ReactQueryProvider } from "~/services/query";
+import { Router } from "~/services/router";
 
 const root = document.getElementById("root");
 
@@ -18,8 +19,10 @@ if (!root) {
 
 createRoot(root).render(
   <StrictMode>
-    <Providers>
-      <Router />
-    </Providers>
+    <ReactQueryProvider>
+      <SentryProvider>
+        <Router />
+      </SentryProvider>
+    </ReactQueryProvider>
   </StrictMode>,
 );
