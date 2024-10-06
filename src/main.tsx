@@ -1,13 +1,13 @@
-import "~/services/monitoring/SentryInit";
+import "~/services/sentry/SentryInit";
 
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
-import { SentryProvider } from "~/services/monitoring";
 import { ReactQueryProvider } from "~/services/query";
 import { Router } from "~/services/router";
+import { SentryProvider } from "~/services/sentry";
 
 const root = document.getElementById("root");
 

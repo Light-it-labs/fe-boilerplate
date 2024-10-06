@@ -16,7 +16,7 @@
       "~/sections": ["./shared/sections"],
       "~/utils": ["./shared/utils"],
       "~/api": ["./services/api"],
-      "~/monitoring": ["./services/monitoring"],
+      "~/sentry": ["./services/sentry"],
       "~/query": ["./services/query"],
       "~/router": ["./services/router"],
       "~/stores": ["./services/stores"],

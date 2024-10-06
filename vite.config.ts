@@ -64,8 +64,8 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
           replacement: path.resolve(__dirname, "./src/services/api"),
         },
         {
-          find: "~/monitoring",
-          replacement: path.resolve(__dirname, "./src/services/monitoring"),
+          find: "~/sentry",
+          replacement: path.resolve(__dirname, "./src/services/sentry"),
         },
         {
           find: "~/query",
