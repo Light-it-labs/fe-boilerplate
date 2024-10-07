@@ -59,6 +59,26 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
           find: "~/utils",
           replacement: path.resolve(__dirname, "./src/shared/utils"),
         },
+        {
+          find: "~/api",
+          replacement: path.resolve(__dirname, "./src/services/api"),
+        },
+        {
+          find: "~/sentry",
+          replacement: path.resolve(__dirname, "./src/services/sentry"),
+        },
+        {
+          find: "~/query",
+          replacement: path.resolve(__dirname, "./src/services/query"),
+        },
+        {
+          find: "~/router",
+          replacement: path.resolve(__dirname, "./src/services/router"),
+        },
+        {
+          find: "~/stores",
+          replacement: path.resolve(__dirname, "./src/services/stores"),
+        },
         { find: "~", replacement: path.resolve(__dirname, "./src") },
       ],
     },

@@ -47,3 +47,5 @@ function checkEnv() {
 }
 
 export const env = checkEnv();
+
+export const isLocal = env.VITE_APP_ENV === "local";

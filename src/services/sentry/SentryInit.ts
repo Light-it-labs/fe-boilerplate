@@ -1,7 +1,6 @@
 import * as Sentry from "@sentry/react";
 
-import { isLocal } from "~/config";
-import { env } from "~/env";
+import { env, isLocal } from "~/config";
 
 if (!isLocal) {
   Sentry.init({
