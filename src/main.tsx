@@ -1,4 +1,4 @@
-import "~/providers/sentry/sentry";
+import "~/config/providers/scripts/sentry";
 
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
