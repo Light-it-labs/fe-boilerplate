@@ -12,7 +12,7 @@ export type AuthStoreState = {
   token: string | null;
 };
 
-export const useAuthStore = create<AuthStoreState>()(
+const useAuthStore = create<AuthStoreState>()(
   persist(
     (_) => ({
       token: null,
@@ -22,6 +22,10 @@ export const useAuthStore = create<AuthStoreState>()(
     },
   ),
 );
+
+export const getState = () => useAuthStore.getState();
+
+export const getToken = () => useAuthStore((state) => state.token);
 
 export const setToken = (token: string | null) =>
   useAuthStore.setState(() => ({ token }));

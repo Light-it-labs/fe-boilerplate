@@ -14,17 +14,21 @@ export type ExampleStoreState = {
   thirdValue: number | null;
 };
 
-export const useStore = create<ExampleStoreState>()(() => ({
+const useStore = create<ExampleStoreState>(() => ({
   firstValue: null,
   secondValue: null,
   thirdValue: null,
 }));
 
-export const setFirstValue = () =>
-  useStore.setState((state) => ({ firstValue: state.firstValue }));
+export const getFirstValue = () => useStore((state) => state.firstValue);
+export const getSecondValue = () => useStore((state) => state.secondValue);
+export const getThirdValue = () => useStore((state) => state.thirdValue);
 
-export const setSecondValue = () =>
-  useStore.setState((state) => ({ secondValue: state.secondValue }));
+export const setFirstValue = (firstValue: ExampleStoreState["firstValue"]) =>
+  useStore.setState(() => ({ firstValue }));
 
-export const setThirdValue = () =>
-  useStore.setState((state) => ({ thirdValue: state.thirdValue }));
+export const setSecondValue = (secondValue: ExampleStoreState["secondValue"]) =>
+  useStore.setState(() => ({ secondValue }));
+
+export const setThirdValue = (thirdValue: ExampleStoreState["thirdValue"]) =>
+  useStore.setState(() => ({ thirdValue }));
