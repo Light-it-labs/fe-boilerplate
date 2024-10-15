@@ -1,9 +1,9 @@
 import type { InternalAxiosRequestConfig } from "axios";
 
-import { useAuthStore } from "~/stores";
+import { authStore } from "~/stores";
 
 export const authHeaderInterceptor = (config: InternalAxiosRequestConfig) => {
-  const { token } = useAuthStore.getState();
+  const { token } = authStore.getState();
 
   config.headers.Authorization = token ? `Bearer ${token}` : undefined;
 

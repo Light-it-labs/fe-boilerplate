@@ -1,6 +1,6 @@
 import mem from "mem";
 
-import { setToken } from "~/stores";
+import { authStore } from "~/stores";
 import type { ServiceResponse } from "../api.types";
 import { api } from "../axios";
 
@@ -22,13 +22,13 @@ const refreshToken = async () => {
     );
     const { data: userToken } = response.data;
     if (!userToken.refresh_token) {
-      setToken(null);
+      authStore.setToken(null);
     } else {
       refreshWasSuccessful = true;
-      setToken(userToken.refresh_token);
+      authStore.setToken(userToken.refresh_token);
     }
   } catch (error) {
-    setToken(null);
+    authStore.setToken(null);
   }
   return refreshWasSuccessful;
 };
