@@ -9,9 +9,10 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import { Control, FieldValues, Path, useController } from "react-hook-form";
+import { Control, FieldValues, Path } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
+import { useFieldController } from "~/hooks";
 import { currentTimezone } from "~/utils";
 
 const datefield = tv({
@@ -28,8 +29,8 @@ const { dateInput, dateSegment, error, desc } = datefield();
 
 interface DateFieldProps<T extends DateValue, U extends FieldValues>
   extends AriaDateFieldProps<T> {
-  name: Path<U>;
-  control: Control<U>;
+  name?: Path<U>;
+  control?: Control<U>;
   label?: string;
   description?: string;
   errorMessage?: string;
@@ -43,15 +44,18 @@ export function DateField<T extends DateValue, U extends FieldValues>({
   errorMessage,
   ...props
 }: DateFieldProps<T, U>) {
-  const { field } = useController({ name, control });
+  const controller = useFieldController({ name, control });
+
   return (
     <AriaDateField
-      {...props}
-      onChange={(newDate) => {
-        field.onChange(newDate.toDate(currentTimezone).toISOString());
+      onChange={(newDate: DateValue) => {
+        controller?.field.onChange(
+          newDate.toDate(currentTimezone).toISOString(),
+        );
       }}
-      onBlur={field.onBlur}
-      ref={field.ref}
+      onBlur={controller?.field.onBlur}
+      ref={controller?.field.ref}
+      {...props}
     >
       <Label>{label}</Label>
       <DateInput className={dateInput()}>

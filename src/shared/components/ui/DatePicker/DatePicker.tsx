@@ -15,9 +15,9 @@ import {
   Text,
 } from "react-aria-components";
 import type { Control, FieldValues, Path } from "react-hook-form";
-import { useController } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
+import { useFieldController } from "~/hooks";
 import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
@@ -39,8 +39,8 @@ const { dateGroup, dateInput, dateSegment, trigger, popover, error, desc } =
 
 interface DatePickerProps<T extends DateValue, U extends FieldValues>
   extends AriaDatePickerProps<T> {
-  name: Path<U>;
-  control: Control<U>;
+  name?: Path<U>;
+  control?: Control<U>;
   label?: string;
   description?: string;
   errorMessage?: string;
@@ -54,15 +54,17 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
   control,
   ...props
 }: DatePickerProps<T, U>) => {
-  const { field } = useController({ name, control });
+  const controller = useFieldController({ name, control });
 
   return (
     <AriaDatePicker
-      {...props}
       onChange={(newDate) => {
-        field.onChange(newDate.toDate(currentTimezone).toISOString());
+        controller?.field.onChange(
+          newDate.toDate(currentTimezone).toISOString(),
+        );
       }}
-      onBlur={field.onBlur}
+      onBlur={controller?.field.onBlur}
+      {...props}
     >
       <Label>{label}</Label>
       <Group className={dateGroup()}>
@@ -71,7 +73,7 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
             <DateSegment className={dateSegment()} segment={segment} />
           )}
         </DateInput>
-        <Button ref={field.ref} className={trigger()}>
+        <Button ref={controller?.field.ref} className={trigger()}>
           🗓️
         </Button>
       </Group>

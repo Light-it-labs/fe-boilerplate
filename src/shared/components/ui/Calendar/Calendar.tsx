@@ -3,10 +3,10 @@ import type {
   DateValue,
 } from "react-aria-components";
 import { Calendar as AriaCalendar, Label, Text } from "react-aria-components";
-import { useController } from "react-hook-form";
 import type { Control, FieldValues, Path } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
+import { useFieldController } from "~/hooks";
 import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "./CalendarHeader";
 import { CalendarTable } from "./CalendarTable";
@@ -23,8 +23,8 @@ const { container, error, desc } = calendar();
 
 interface CalendarProps<T extends DateValue, U extends FieldValues>
   extends AriaCalendarProps<T> {
-  name: Path<U>;
-  control: Control<U>;
+  name?: Path<U>;
+  control?: Control<U>;
   errorMessage?: string;
   label?: string;
   description?: string;
@@ -38,19 +38,21 @@ export const Calendar = <T extends DateValue, U extends FieldValues>({
   description,
   ...props
 }: CalendarProps<T, U>) => {
-  const { field } = useController({ name, control });
+  const controller = useFieldController({ name, control });
 
   return (
     <div>
       {label && <Label id={label}>{label}</Label>}
       <AriaCalendar
+        onChange={(newDate) => {
+          controller?.field.onChange(
+            newDate.toDate(currentTimezone).toISOString(),
+          );
+        }}
+        onFocusChange={controller?.field.onBlur}
+        // TODO: ref={field.ref} Need to pass this down to CalendarTable to focus on error
         {...props}
         aria-labelledby={label}
-        onChange={(newDate) => {
-          field.onChange(newDate.toDate(currentTimezone).toISOString());
-        }}
-        onFocusChange={field.onBlur}
-        // TODO: ref={field.ref} Need to pass this down to CalendarTable to focus on error
         className={container()}
       >
         <CalendarHeader />

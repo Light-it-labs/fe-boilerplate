@@ -7,9 +7,10 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import { Control, FieldValues, Path, useController } from "react-hook-form";
+import { Control, FieldValues, Path } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
+import { useFieldController } from "~/hooks";
 import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
@@ -27,8 +28,8 @@ const { calendars, container, error, desc } = rangecalendar();
 
 interface RangeCalendarProps<T extends DateValue, U extends FieldValues>
   extends AriaRangeCalendarProps<T> {
-  name: Path<U>;
-  control: Control<U>;
+  name?: Path<U>;
+  control?: Control<U>;
   errorMessage?: string;
   label?: string;
   description?: string;
@@ -42,21 +43,22 @@ export function RangeCalendar<T extends DateValue, U extends FieldValues>({
   control,
   ...props
 }: RangeCalendarProps<T, U>) {
-  const { field } = useController({ name, control });
+  const controller = useFieldController({ name, control });
+
   return (
     <div>
       {label && <Label id={label}>{label}</Label>}
       <AriaRangeCalendar
-        {...props}
-        visibleDuration={{ months: 2 }}
-        aria-labelledby={label}
         onChange={(newDate) => {
-          field.onChange([
+          controller?.field.onChange([
             newDate?.start.toDate(currentTimezone).toISOString(),
             newDate?.end.toDate(currentTimezone).toISOString(),
           ]);
         }}
-        onFocusChange={field.onBlur}
+        onFocusChange={controller?.field.onBlur}
+        {...props}
+        visibleDuration={{ months: 2 }}
+        aria-labelledby={label}
         className={container()}
       >
         <CalendarHeader />
