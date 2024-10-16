@@ -29,7 +29,7 @@ const { dateInput, dateSegment, error, desc } = datefield();
 
 interface DateFieldProps<T extends DateValue, U extends FieldValues>
   extends AriaDateFieldProps<T> {
-  name?: Path<U>;
+  name: Path<U>;
   control?: Control<U>;
   label?: string;
   description?: string;

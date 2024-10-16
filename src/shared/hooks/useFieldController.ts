@@ -4,8 +4,8 @@ export function useFieldController<U extends FieldValues>({
   name,
   control,
 }: {
-  name?: Path<U>;
+  name: Path<U>;
   control?: Control<U>;
 }) {
-  return name && control ? useController({ name, control }) : null;
+  return control ? useController({ name, control }) : null;
 }
