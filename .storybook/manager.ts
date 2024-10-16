@@ -1,10 +1,8 @@
 import { addons } from "@storybook/manager-api";
 
-import DefaultTheme from "./theme";
+import theme from "./theme";
 
 addons.setConfig({
-  theme: DefaultTheme,
-  sidebar: {
-    showRoots: true,
-  },
+  theme,
+  sidebar: { showRoots: true },
 });
