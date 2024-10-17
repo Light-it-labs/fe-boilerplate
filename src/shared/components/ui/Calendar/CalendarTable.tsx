@@ -16,7 +16,7 @@ const calendarTable = tv({
 });
 
 const calendarCell = tv({
-  base: "mx-auto my-0.5 flex aspect-square w-8 items-center justify-center rounded-full text-sm font-semibold text-gray-600 sm:w-11",
+  base: "mx-auto my-0.5 flex aspect-square w-8 items-center justify-center rounded-lg text-sm font-semibold text-gray-600 sm:w-11",
   variants: {
     state: {
       default: "",

@@ -9,10 +9,11 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import { Control, FieldValues, Path } from "react-hook-form";
+import { FieldValues, Path } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
+import { WithHookForm, WithoutHookForm } from "~/shared";
 import { currentTimezone } from "~/utils";
 
 const datefield = tv({
@@ -27,14 +28,17 @@ const datefield = tv({
 
 const { dateInput, dateSegment, error, desc } = datefield();
 
-interface DateFieldProps<T extends DateValue, U extends FieldValues>
+interface DateFieldBaseProps<T extends DateValue>
   extends AriaDateFieldProps<T> {
-  name: Path<U>;
-  control?: Control<U>;
   label?: string;
   description?: string;
   errorMessage?: string;
 }
+
+type DateFieldProps<
+  T extends DateValue,
+  U extends FieldValues,
+> = DateFieldBaseProps<T> & (WithHookForm<U> | WithoutHookForm<T>);
 
 export function DateField<T extends DateValue, U extends FieldValues>({
   name,
@@ -44,7 +48,7 @@ export function DateField<T extends DateValue, U extends FieldValues>({
   errorMessage,
   ...props
 }: DateFieldProps<T, U>) {
-  const controller = useFieldController({ name, control });
+  const controller = useFieldController({ name: name as Path<U>, control });
 
   return (
     <AriaDateField

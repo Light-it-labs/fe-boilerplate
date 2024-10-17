@@ -7,10 +7,11 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import { Control, FieldValues, Path } from "react-hook-form";
+import { FieldValues, Path } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
+import { WithHookForm, WithoutHookForm } from "~/shared";
 import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
@@ -26,14 +27,17 @@ const rangecalendar = tv({
 
 const { calendars, container, error, desc } = rangecalendar();
 
-interface RangeCalendarProps<T extends DateValue, U extends FieldValues>
+interface RangeCalendarBaseProps<T extends DateValue>
   extends AriaRangeCalendarProps<T> {
-  name?: Path<U>;
-  control?: Control<U>;
   errorMessage?: string;
   label?: string;
   description?: string;
 }
+
+type RangeCalendarProps<
+  T extends DateValue,
+  U extends FieldValues,
+> = RangeCalendarBaseProps<T> & (WithHookForm<U> | WithoutHookForm<T>);
 
 export function RangeCalendar<T extends DateValue, U extends FieldValues>({
   errorMessage,
@@ -43,7 +47,7 @@ export function RangeCalendar<T extends DateValue, U extends FieldValues>({
   control,
   ...props
 }: RangeCalendarProps<T, U>) {
-  const controller = useFieldController({ name, control });
+  const controller = useFieldController({ name: name as Path<U>, control });
 
   return (
     <div>

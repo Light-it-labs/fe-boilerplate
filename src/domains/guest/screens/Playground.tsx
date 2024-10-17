@@ -63,9 +63,10 @@ export function Playground() {
       <DateField
         name='datefield'
         label='Choose date from datefield'
-        control={control}
+        // control={control}
         errorMessage={errors.datefield?.message}
         description='This is a help text'
+        onChange={(newEvent) => {}}
       />
       <DatePicker
         name='datepicker'

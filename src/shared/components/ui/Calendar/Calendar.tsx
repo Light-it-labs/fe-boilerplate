@@ -3,10 +3,11 @@ import type {
   DateValue,
 } from "react-aria-components";
 import { Calendar as AriaCalendar, Label, Text } from "react-aria-components";
-import type { Control, FieldValues, Path } from "react-hook-form";
+import type { FieldValues, Path } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
+import { WithHookForm, WithoutHookForm } from "~/shared";
 import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "./CalendarHeader";
 import { CalendarTable } from "./CalendarTable";
@@ -21,14 +22,16 @@ const calendar = tv({
 
 const { container, error, desc } = calendar();
 
-interface CalendarProps<T extends DateValue, U extends FieldValues>
-  extends AriaCalendarProps<T> {
-  name?: Path<U>;
-  control?: Control<U>;
+interface CalendarBaseProps<T extends DateValue> extends AriaCalendarProps<T> {
   errorMessage?: string;
   label?: string;
   description?: string;
 }
+
+type CalendarProps<
+  T extends DateValue,
+  U extends FieldValues,
+> = CalendarBaseProps<T> & (WithHookForm<U> | WithoutHookForm<T>);
 
 export const Calendar = <T extends DateValue, U extends FieldValues>({
   errorMessage,
@@ -38,7 +41,7 @@ export const Calendar = <T extends DateValue, U extends FieldValues>({
   description,
   ...props
 }: CalendarProps<T, U>) => {
-  const controller = useFieldController({ name, control });
+  const controller = useFieldController({ name: name as Path<U>, control });
 
   return (
     <div>
