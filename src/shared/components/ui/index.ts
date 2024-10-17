@@ -21,6 +21,6 @@ export interface WithHookForm<U extends FieldValues> {
 export interface WithoutHookForm<T> {
   name?: string;
   control?: never;
-  onChange?: (newDate: T) => void;
+  onChange?: (newValue: T) => void;
   onBlur?: (event: React.FocusEvent) => void;
 }

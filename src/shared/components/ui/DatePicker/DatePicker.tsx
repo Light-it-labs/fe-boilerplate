@@ -14,7 +14,7 @@ import {
   Popover,
   Text,
 } from "react-aria-components";
-import type { FieldValues, Path } from "react-hook-form";
+import type { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
@@ -59,7 +59,7 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
   control,
   ...props
 }: DatePickerProps<T, U>) => {
-  const controller = useFieldController({ name: name as Path<U>, control });
+  const controller = useFieldController({ name, control });
 
   return (
     <AriaDatePicker

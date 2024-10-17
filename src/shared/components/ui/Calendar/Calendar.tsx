@@ -41,7 +41,7 @@ export const Calendar = <T extends DateValue, U extends FieldValues>({
   description,
   ...props
 }: CalendarProps<T, U>) => {
-  const controller = useFieldController({ name: name as Path<U>, control });
+  const controller = useFieldController({ name, control });
 
   return (
     <div>

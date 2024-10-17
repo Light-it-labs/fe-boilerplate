@@ -7,7 +7,7 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import { FieldValues, Path } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
@@ -47,7 +47,7 @@ export function RangeCalendar<T extends DateValue, U extends FieldValues>({
   control,
   ...props
 }: RangeCalendarProps<T, U>) {
-  const controller = useFieldController({ name: name as Path<U>, control });
+  const controller = useFieldController({ name, control });
 
   return (
     <div>

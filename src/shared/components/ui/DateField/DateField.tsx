@@ -9,7 +9,7 @@ import {
   Label,
   Text,
 } from "react-aria-components";
-import { FieldValues, Path } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
@@ -48,7 +48,7 @@ export function DateField<T extends DateValue, U extends FieldValues>({
   errorMessage,
   ...props
 }: DateFieldProps<T, U>) {
-  const controller = useFieldController({ name: name as Path<U>, control });
+  const controller = useFieldController({ name, control });
 
   return (
     <AriaDateField
