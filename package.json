@@ -121,10 +121,5 @@
     "src/**/*.{js,jsx,ts,tsx}": [
       "pretty-quick --staged"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
