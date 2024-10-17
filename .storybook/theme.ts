@@ -5,8 +5,7 @@ const DefaultTheme = create({
   appBg: "white",
   colorPrimary: "#7445FC",
   colorSecondary: "#7445FC",
-  brandImage: "./logo.png",
-  brandTitle: "Default Component Library",
+  brandTitle: `<img src="/logo.png" height="40" width="120"/>`,
   brandTarget: "_self",
 });
 

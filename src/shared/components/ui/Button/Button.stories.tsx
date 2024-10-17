@@ -1,52 +1,65 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button } from "./Button";
+import { Button } from ".";
 
 const meta: Meta<typeof Button> = {
   component: Button,
-  parameters: {
-    componentSubtitle: "A simple button component",
-  },
-  tags: ["autodocs"],
-};
-
-export default meta;
-
-type Story = StoryObj<typeof Button>;
-
-export const DefaultButton: Story = {
+  parameters: { componentSubtitle: "A simple button component" },
   args: {
     variant: "default",
     size: "default",
     children: "Click Me",
     disabled: false,
   },
-};
-
-export const ErrorButton: Story = {
-  args: {
-    ...DefaultButton.args,
-    variant: "error",
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["default", "outline", "info", "success", "error"],
+    },
+    size: {
+      control: { type: "radio" },
+      options: ["sm", "default", "lg"],
+    },
+    asChild: { table: { disable: true } },
   },
 };
 
-export const SuccessButton: Story = {
-  args: {
-    ...DefaultButton.args,
-    variant: "success",
-  },
+export default meta;
+
+type Story = StoryObj<typeof Button>;
+
+export const Default: Story = {};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <div className='flex size-full items-center gap-4'>
+      <Button {...args} size='sm'>
+        Small
+      </Button>
+      <Button {...args}>Default</Button>
+      <Button {...args} size='lg'>
+        Large
+      </Button>
+    </div>
+  ),
 };
 
-export const InfoButton: Story = {
-  args: {
-    ...DefaultButton.args,
-    variant: "info",
-  },
+export const Disabled: Story = {
+  args: { disabled: true },
 };
 
-export const DisabledButton: Story = {
-  args: {
-    ...DefaultButton.args,
-    disabled: true,
-  },
+export const Outline: Story = {
+  args: { variant: "outline" },
+};
+
+export const Info: Story = {
+  args: { variant: "info" },
+};
+
+export const Success: Story = {
+  args: { variant: "success" },
+};
+
+export const Error: Story = {
+  args: { variant: "error" },
 };
