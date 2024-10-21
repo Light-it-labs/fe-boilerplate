@@ -26,3 +26,5 @@ export const TIME = {
     return 365 * this.DAY;
   },
 };
+
+export const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
