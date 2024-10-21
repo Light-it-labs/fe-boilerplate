@@ -3,3 +3,5 @@ export const dateWithoutTimezone = (input: string) => {
   const withoutTimezone = date.substring(0, date.length - 1);
   return new Date(withoutTimezone);
 };
+
+export const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
