@@ -19,7 +19,7 @@ import { CalendarTable } from "../Calendar/CalendarTable";
 const rangecalendar = tv({
   slots: {
     container: "w-full rounded-lg border bg-white p-5 md:w-fit",
-    calendars: "flex flex-col items-center space-y-6 md:flex-row md:space-x-6",
+    calendars: "flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0",
     error: "text-xs text-red-500",
     desc: "text-xs",
   },
