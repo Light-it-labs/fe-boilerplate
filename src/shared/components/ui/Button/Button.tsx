@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants";
 import type { VariantProps } from "tailwind-variants";
 
 const buttonVariants = tv({
-  base: "focus-visible:ring-ring inline-flex size-fit items-center justify-center whitespace-nowrap rounded-md font-medium text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+  base: "focus-visible:ring-ring inline-flex size-fit items-center justify-center whitespace-nowrap rounded-md text-sm font-medium text-white ring-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
   variants: {
     variant: {
       default: "bg-purple-500 hover:bg-purple-700",
