@@ -3,12 +3,13 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from ".";
 
 const meta: Meta<typeof Button> = {
+  title: "Components/Button",
   component: Button,
   parameters: { componentSubtitle: "A simple button component" },
   args: {
     variant: "default",
     size: "default",
-    children: "Click Me",
+    children: "Button",
     disabled: false,
   },
   argTypes: {
@@ -20,6 +21,7 @@ const meta: Meta<typeof Button> = {
       control: { type: "radio" },
       options: ["sm", "default", "lg"],
     },
+    children: { table: { disable: true } },
     asChild: { table: { disable: true } },
   },
 };
@@ -31,6 +33,10 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {};
 
 export const Sizes: Story = {
+  argTypes: {
+    size: { table: { disable: true } },
+    disabled: { table: { disable: true } },
+  },
   render: (args) => (
     <div className='flex size-full items-center gap-4'>
       <Button {...args} size='sm'>
@@ -44,22 +50,38 @@ export const Sizes: Story = {
   ),
 };
 
+export const Variants: Story = {
+  argTypes: {
+    variant: { table: { disable: true } },
+    disabled: { table: { disable: true } },
+  },
+  render: (args) => (
+    <div className='flex size-full items-center gap-4'>
+      <Button {...args} variant='default'>
+        Default
+      </Button>
+      <Button {...args} variant='outline'>
+        Outline
+      </Button>
+      <Button {...args} variant='info'>
+        Info
+      </Button>
+      <Button {...args} variant='success'>
+        Success
+      </Button>
+      <Button {...args} variant='error'>
+        Error
+      </Button>
+    </div>
+  ),
+};
+
 export const Disabled: Story = {
-  args: { disabled: true },
-};
-
-export const Outline: Story = {
-  args: { variant: "outline" },
-};
-
-export const Info: Story = {
-  args: { variant: "info" },
-};
-
-export const Success: Story = {
-  args: { variant: "success" },
-};
-
-export const Error: Story = {
-  args: { variant: "error" },
+  argTypes: {
+    size: { table: { disable: true } },
+    variant: { table: { disable: true } },
+  },
+  args: {
+    disabled: true,
+  },
 };

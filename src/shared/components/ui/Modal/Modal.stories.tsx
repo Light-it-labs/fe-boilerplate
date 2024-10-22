@@ -5,6 +5,7 @@ import { Button } from "../Button";
 import * as Modal from "./Modal";
 
 const meta: Meta<typeof Modal.Root> = {
+  title: "Components/Modal",
   parameters: { componentSubtitle: "A simple modal component" },
   args: { open: false },
 };

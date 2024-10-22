@@ -1,10 +1,10 @@
-import type { InputHTMLAttributes } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { forwardRef } from "react";
 import { Slot } from "@radix-ui/react-slot";
 
 import { tw } from "~/utils";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends ComponentPropsWithoutRef<"input"> {
   asChild?: boolean;
 }
 

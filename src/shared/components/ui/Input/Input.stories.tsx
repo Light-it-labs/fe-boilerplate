@@ -3,9 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Input } from ".";
 
 const meta: Meta<typeof Input> = {
+  title: "Components/Input",
   component: Input,
   parameters: { componentSubtitle: "A simple input component" },
-  args: { placeholder: "Type something..." },
+  args: {
+    placeholder: "Placeholder",
+  },
 };
 
 export default meta;

@@ -5,7 +5,7 @@ const DefaultTheme = create({
   appBg: "white",
   colorPrimary: "#7445FC",
   colorSecondary: "#7445FC",
-  brandTitle: `<img src="/logo.png" height="40" width="120"/>`,
+  brandTitle: `<img src="/logo.svg" height="40" width="120"/>`,
   brandTarget: "_self",
 });
 
