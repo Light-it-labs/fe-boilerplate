@@ -15,15 +15,14 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["default", "outline", "info", "success", "error"],
     },
     size: {
       control: { type: "radio" },
-      options: ["sm", "default", "lg"],
     },
     children: { table: { disable: true } },
     asChild: { table: { disable: true } },
   },
+  tags: ["autodocs"],
 };
 
 export default meta;
