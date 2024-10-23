@@ -9,6 +9,9 @@ const meta: Meta<typeof Input> = {
   args: {
     placeholder: "Placeholder",
   },
+  argTypes: {
+    asChild: { table: { disable: true } },
+  },
 };
 
 export default meta;
