@@ -70,6 +70,8 @@ export default [
       ],
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
+
+    extends: ["plugin:storybook/recommended"],
   },
   {
     // Rules for Storybook
