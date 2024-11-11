@@ -1,6 +1,6 @@
 import { api } from "~/api";
 import type { ServiceResponse } from "~/api";
-import { useAuthStore } from "~/stores";
+import { authStore } from "~/stores";
 
 export type UserToken = {
   accessToken: string;
@@ -27,7 +27,5 @@ export const googleLogin = async ({
 };
 
 export const logout = () => {
-  const { setToken } = useAuthStore.getState();
-
-  setToken(null);
+  authStore.setToken(null);
 };
