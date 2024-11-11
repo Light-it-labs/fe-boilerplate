@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# Frontend Boilerplate
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -117,3 +117,10 @@ PRODUCTION_AWS_SECRET_ACCESS_KEY
 ```
 
 Both staging and production actions are configured to run only manually. This can be changed as needed.
+
+## Storybook
+
+This project is configured to use storybook.
+
+It can be started by running `pnpm storybook`.
+Stories are automatically loaded, and storybook can be accessed at `http://localhost:6006`.
