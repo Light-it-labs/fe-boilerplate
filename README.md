@@ -17,15 +17,21 @@ To facilitate the creation of new projects from this boilerplate, you can define
 ```
 cat << __EOF__ >> ~/.zshrc
 create_fe_project() {
-   git clone git@github.com:Light-it-labs/fe-boilerplate.git $@
+   # Clone the boilerplate repository
+   git clone git@github.com:Light-it-labs/fe-boilerplate.git "$@"
+   # Change to the newly created directory
    cd $_
+   # Remove the boilerplate change history
    rm -fr .git
+   # Create a new GIT repository
    git init
+   # Install the defined version of NodeJS
    nvm install
+   # Change the project name
    npm pkg set name="$@"
-   corepack enable
-   pnpm install
+   # Add all files to commit
    git add --all
+   # Create the initial commit
    git commit -m "initial project setup from fe-boilerplate"
 }
 __EOF__
