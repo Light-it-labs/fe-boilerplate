@@ -9,6 +9,62 @@ Currently, four official plugins are available:
 - [@sentry/react](https://docs.sentry.io/platforms/javascript/guides/react/) providing React-specific error boundaries and hooks for monitoring exceptions and performance issues.
 - [@sentry/vite-plugin](https://docs.sentry.io/platforms/javascript/guides/react/sourcemaps/uploading/vite/) automates source map uploading for Vite-based projects, enhancing Sentry's debugging capabilities with meaningful error information.
 
+
+## Create a brand new project from boilerplate
+
+To facilitate the creation of new projects from this boilerplate, you can define the following function in the shell initialization file
+
+```
+cat << __EOF__ >> ~/.zshrc
+create_fe_project() {
+   git clone git@github.com:Light-it-labs/fe-boilerplate.git $@
+   cd $_
+   rm -fr .git
+   git init
+   nvm install
+   npm pkg set name="$@"
+   corepack enable
+   pnpm install
+   git add --all
+   git commit -m "initial project setup from fe-boilerplate"
+}
+__EOF__
+```
+
+Then run the following command to create a new project
+
+```
+create_fe_project my-awesome-project
+```
+
+## Setup a already created project from this boilerplate
+
+After cloning a project created by this boilerplate, make sure to follow the steps below
+
+1. Setup the correct NodeJS version
+
+```bash
+nvm install
+```
+
+2. Ensure you have corepack enabled
+
+```bash
+corepack enable
+```
+
+3. Install project dependencies
+
+```bash
+pnpm install
+```
+
+4. Run the development server
+
+```bash
+pnpm dev
+```
+
 ## Sentry
 
 Sentry is a developer-first error tracking and performance monitoring platform. Errors are logged both from the frontend and backend. In order to get it up and running, you need to follow these steps:
