@@ -35,7 +35,7 @@ const playgroundFormSchema = z.object({
 
 type PlaygroundForm = z.infer<typeof playgroundFormSchema>;
 
-export function Playground() {
+export const Playground = () => {
   const {
     handleSubmit,
     control,
@@ -100,4 +100,4 @@ export function Playground() {
       </Button>
     </form>
   );
-}
+};
