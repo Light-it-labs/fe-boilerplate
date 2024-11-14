@@ -12,7 +12,7 @@ const calendarHeader = tv({
 
 const { root, previous, next, heading } = calendarHeader();
 
-export function CalendarHeader() {
+export const CalendarHeader = () => {
   return (
     <header className={root()}>
       <Button className={previous()} slot='previous'>
@@ -24,4 +24,4 @@ export function CalendarHeader() {
       </Button>
     </header>
   );
-}
+};

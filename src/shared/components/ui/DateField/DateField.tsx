@@ -40,14 +40,14 @@ type DateFieldProps<
   U extends FieldValues,
 > = DateFieldBaseProps<T> & (WithHookForm<U> | WithoutHookForm<T>);
 
-export function DateField<T extends DateValue, U extends FieldValues>({
+export const DateField = <T extends DateValue, U extends FieldValues>({
   name,
   control,
   label,
   description,
   errorMessage,
   ...props
-}: DateFieldProps<T, U>) {
+}: DateFieldProps<T, U>) => {
   const controller = useFieldController({ name, control });
 
   return (
@@ -79,4 +79,4 @@ export function DateField<T extends DateValue, U extends FieldValues>({
       )}
     </AriaDateField>
   );
-}
+};

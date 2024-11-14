@@ -35,7 +35,7 @@ const calendarCell = tv({
 
 const { root, dayOfWeek } = calendarTable();
 
-export function CalendarTable(props: CalendarGridProps) {
+export const CalendarTable = (props: CalendarGridProps) => {
   return (
     <CalendarGrid weekdayStyle='short' className={root()} {...props}>
       <CalendarGridHeader>
@@ -64,4 +64,4 @@ export function CalendarTable(props: CalendarGridProps) {
       </CalendarGridBody>
     </CalendarGrid>
   );
-}
+};

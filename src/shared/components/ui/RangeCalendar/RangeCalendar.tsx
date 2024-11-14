@@ -39,14 +39,14 @@ type RangeCalendarProps<
   U extends FieldValues,
 > = RangeCalendarBaseProps<T> & (WithHookForm<U> | WithoutHookForm<T>);
 
-export function RangeCalendar<T extends DateValue, U extends FieldValues>({
+export const RangeCalendar = <T extends DateValue, U extends FieldValues>({
   errorMessage,
   description,
   label,
   name,
   control,
   ...props
-}: RangeCalendarProps<T, U>) {
+}: RangeCalendarProps<T, U>) => {
   const controller = useFieldController({ name, control });
 
   return (
@@ -83,4 +83,4 @@ export function RangeCalendar<T extends DateValue, U extends FieldValues>({
       )}
     </div>
   );
-}
+};
