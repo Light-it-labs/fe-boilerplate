@@ -52,7 +52,7 @@ export const DateField = <T extends DateValue, U extends FieldValues>({
 
   return (
     <AriaDateField
-      onChange={(newDate: DateValue) => {
+      onChange={(newDate) => {
         controller?.field.onChange(
           newDate.toDate(currentTimezone).toISOString(),
         );
