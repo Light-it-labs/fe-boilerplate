@@ -23,7 +23,7 @@ import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
 
-const datepicker = tv({
+const classNames = tv({
   slots: {
     dateGroup: "flex w-full rounded-lg border md:w-fit",
     dateInput: "flex flex-1 items-center space-x-1 p-2",
@@ -34,10 +34,7 @@ const datepicker = tv({
     error: "text-xs text-red-500",
     desc: "text-xs",
   },
-});
-
-const { dateGroup, dateInput, dateSegment, trigger, popover, error, desc } =
-  datepicker();
+})();
 
 interface DatePickerBaseProps<T extends DateValue>
   extends AriaDatePickerProps<T> {
@@ -72,27 +69,27 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
       {...props}
     >
       <Label>{label}</Label>
-      <Group className={dateGroup()}>
-        <DateInput className={dateInput()}>
+      <Group className={classNames.dateGroup}>
+        <DateInput className={classNames.dateInput}>
           {(segment) => (
-            <DateSegment className={dateSegment()} segment={segment} />
+            <DateSegment className={classNames.dateSegment} segment={segment} />
           )}
         </DateInput>
-        <Button ref={controller?.field.ref} className={trigger()}>
+        <Button ref={controller?.field.ref} className={classNames.trigger}>
           🗓️
         </Button>
       </Group>
       {errorMessage && (
-        <Text className={error()} slot='errorMessage'>
+        <Text className={classNames.error()} slot='errorMessage'>
           {errorMessage}
         </Text>
       )}
       {description && !errorMessage && (
-        <Text className={desc()} slot='description'>
+        <Text className={classNames.desc()} slot='description'>
           {description}
         </Text>
       )}
-      <Popover className={popover()}>
+      <Popover className={classNames.popover}>
         <Dialog>
           <Calendar>
             <CalendarHeader />

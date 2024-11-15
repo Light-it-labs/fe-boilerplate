@@ -16,7 +16,7 @@ import { useFieldController } from "~/hooks";
 import { WithHookForm, WithoutHookForm } from "~/shared";
 import { currentTimezone } from "~/utils";
 
-const datefield = tv({
+const classNames = tv({
   slots: {
     dateInput:
       "flex w-full items-center space-x-1 rounded-lg border p-2 md:w-fit",
@@ -24,9 +24,7 @@ const datefield = tv({
     error: "text-xs text-red-500",
     desc: "text-xs",
   },
-});
-
-const { dateInput, dateSegment, error, desc } = datefield();
+})();
 
 interface DateFieldBaseProps<T extends DateValue>
   extends AriaDateFieldProps<T> {
@@ -62,18 +60,18 @@ export const DateField = <T extends DateValue, U extends FieldValues>({
       {...props}
     >
       <Label>{label}</Label>
-      <DateInput className={dateInput()}>
+      <DateInput className={classNames.dateInput}>
         {(segment) => (
-          <DateSegment className={dateSegment()} segment={segment} />
+          <DateSegment className={classNames.dateSegment} segment={segment} />
         )}
       </DateInput>
       {errorMessage && (
-        <Text className={error()} slot='errorMessage'>
+        <Text className={classNames.error()} slot='errorMessage'>
           {errorMessage}
         </Text>
       )}
       {description && !errorMessage && (
-        <Text className={desc()} slot='description'>
+        <Text className={classNames.desc()} slot='description'>
           {description}
         </Text>
       )}

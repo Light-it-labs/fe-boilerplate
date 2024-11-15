@@ -16,16 +16,14 @@ import { currentTimezone } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
 
-const rangecalendar = tv({
+const classNames = tv({
   slots: {
     container: "w-full rounded-lg border bg-white p-5 md:w-fit",
     calendars: "flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0",
     error: "text-xs text-red-500",
     desc: "text-xs",
   },
-});
-
-const { calendars, container, error, desc } = rangecalendar();
+})();
 
 interface RangeCalendarBaseProps<T extends DateValue>
   extends AriaRangeCalendarProps<T> {
@@ -63,21 +61,21 @@ export const RangeCalendar = <T extends DateValue, U extends FieldValues>({
         {...props}
         visibleDuration={{ months: 2 }}
         aria-labelledby={label}
-        className={container()}
+        className={classNames.container}
       >
         <CalendarHeader />
-        <div className={calendars()}>
+        <div className={classNames.calendars()}>
           <CalendarTable />
           <CalendarTable offset={{ months: 1 }} />
         </div>
       </AriaRangeCalendar>
       {errorMessage && (
-        <Text className={error()} slot='errorMessage'>
+        <Text className={classNames.error()} slot='errorMessage'>
           {errorMessage}
         </Text>
       )}
       {description && !errorMessage && (
-        <Text className={desc()} slot='description'>
+        <Text className={classNames.desc()} slot='description'>
           {description}
         </Text>
       )}
