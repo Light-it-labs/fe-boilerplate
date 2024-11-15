@@ -7,13 +7,16 @@ const meta: Meta<typeof DatePicker> = {
   title: "Components/Datetime/DatePicker",
   component: DatePicker,
   decorators: [
-    (Story: Story) => (
+    (Story) => (
       <I18nProvider locale='en-US'>
         <Story />
       </I18nProvider>
     ),
   ],
-  parameters: { componentSubtitle: "A datepicker component" },
+  parameters: {
+    componentSubtitle:
+      "A date picker combines a DateField and a Calendar popover to allow users to enter or select a date and time value.",
+  },
   args: {},
   argTypes: {},
   tags: ["autodocs"],

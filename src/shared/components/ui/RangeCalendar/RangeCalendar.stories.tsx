@@ -7,13 +7,16 @@ const meta: Meta<typeof RangeCalendar> = {
   title: "Components/Datetime/RangeCalendar",
   component: RangeCalendar,
   decorators: [
-    (Story: Story) => (
+    (Story) => (
       <I18nProvider locale='en-US'>
         <Story />
       </I18nProvider>
     ),
   ],
-  parameters: { componentSubtitle: "A range calendar component" },
+  parameters: {
+    componentSubtitle:
+      "A range calendar displays one or more date grids and allows users to select a contiguous range of dates.",
+  },
   args: {},
   argTypes: {},
   tags: ["autodocs"],
