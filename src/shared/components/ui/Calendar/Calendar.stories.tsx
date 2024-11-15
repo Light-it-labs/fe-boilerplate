@@ -1,6 +1,6 @@
-import { isWeekend, today } from "@internationalized/date";
+import { today } from "@internationalized/date";
 import type { Meta, StoryObj } from "@storybook/react";
-import { I18nProvider, useLocale } from "react-aria-components";
+import { I18nProvider } from "react-aria-components";
 
 import { currentTimezone } from "~/utils";
 import { Calendar } from ".";
@@ -49,27 +49,15 @@ export const DifferentLocale: Story = {
   render: () => <Calendar />,
 };
 
-export const DisabledWeekends: Story = {
+export const DisabledBeforeToday: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          "Disabling dates is achieved by passing a filtering function to the `isDateUnavailable` prop. It receives each `dateValue`, and you can run that through any check. The example uses `isWeekend`, but the same principle applies to disabling dates before today or other use cases. You can use any of the checking functions from `@internationalized/date` or compare dates using `dateValue.compare()`",
+          "Disabling dates is achieved by passing a filtering function to the `isDateUnavailable` prop. It receives each `dateValue`, and you can run that through any check. You can use any of the checking functions from `@internationalized/date` or compare dates using `dateValue.compare()`",
       },
     },
   },
-  render: () => {
-    const { locale } = useLocale();
-
-    return (
-      <Calendar
-        isDateUnavailable={(dateValue) => isWeekend(dateValue, locale)}
-      />
-    );
-  },
-};
-
-export const DisabledBeforeToday: Story = {
   render: () => {
     return (
       <Calendar
