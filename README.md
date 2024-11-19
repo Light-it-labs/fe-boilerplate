@@ -18,9 +18,9 @@ To facilitate the creation of new projects from this boilerplate, you can define
 cat << __EOF__ >> ~/.zshrc
 create_fe_project() {
    # Clone the boilerplate repository
-   git clone git@github.com:Light-it-labs/fe-boilerplate.git "$@"
+   git clone git@github.com:Light-it-labs/fe-boilerplate.git "\$@"
    # Change to the newly created directory
-   cd $_
+   cd "\$@"
    # Remove the boilerplate change history
    rm -fr .git
    # Create a new GIT repository
@@ -28,7 +28,7 @@ create_fe_project() {
    # Install the defined version of NodeJS
    nvm install
    # Change the project name
-   npm pkg set name="$@"
+   npm pkg set name="\$@"
    # Add all files to commit
    git add --all
    # Create the initial commit
