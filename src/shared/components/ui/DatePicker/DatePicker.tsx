@@ -54,6 +54,7 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
   errorMessage,
   name,
   control,
+  slot,
   ...props
 }: DatePickerProps<T, U>) => {
   const controller = useFieldController({ name, control });
@@ -70,7 +71,7 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
     >
       <Label>{label}</Label>
       <Group className={classNames.dateGroup}>
-        <DateInput className={classNames.dateInput}>
+        <DateInput className={classNames.dateInput} slot={slot}>
           {(segment) => (
             <DateSegment className={classNames.dateSegment} segment={segment} />
           )}

@@ -10,6 +10,7 @@ import {
   Calendar,
   DateField,
   DatePicker,
+  DateRangePicker,
   RangeCalendar,
 } from "~/shared/components";
 import { dateRangeRules, dateRules } from "~/utils";
@@ -17,6 +18,7 @@ import { dateRangeRules, dateRules } from "~/utils";
 const playgroundFormSchema = z.object({
   datefield: dateRules,
   datepicker: dateRules,
+  daterangepicker: dateRangeRules,
   calendar: dateRules,
   rangecalendar: dateRangeRules,
 });
@@ -32,6 +34,7 @@ export const Playground = () => {
     defaultValues: {
       datefield: undefined,
       datepicker: undefined,
+      daterangepicker: undefined,
       calendar: undefined,
       rangecalendar: undefined,
     },
@@ -39,7 +42,6 @@ export const Playground = () => {
   });
 
   const currentLocale = useLocale();
-
   const onSubmit: SubmitHandler<PlaygroundForm> = (form) => {
     console.log({
       ...form,
@@ -65,6 +67,17 @@ export const Playground = () => {
           !isWeekend(dateValue, currentLocale.locale)
         }
         granularity='second'
+      />
+      <DateRangePicker
+        name='daterangepicker'
+        control={control}
+        label='Choose date from daterangepicker'
+        errorMessage={errors.daterangepicker?.message}
+        description='This is a help text'
+        isDateUnavailable={(dateValue) =>
+          isWeekend(dateValue, currentLocale.locale)
+        }
+        allowsNonContiguousRanges
       />
       <Calendar
         name='calendar'

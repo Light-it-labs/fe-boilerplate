@@ -3,6 +3,7 @@ import { Control, FieldValues, Path } from "react-hook-form";
 export * from "./Button";
 export * from "./Calendar";
 export * from "./DateField";
+export * from "./DateRangePicker";
 export * from "./DatePicker";
 export * from "./Modal";
 export * from "./RangeCalendar";
