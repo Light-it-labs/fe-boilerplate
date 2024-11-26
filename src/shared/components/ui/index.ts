@@ -7,6 +7,7 @@ export * from "./DateRangePicker";
 export * from "./DatePicker";
 export * from "./Modal";
 export * from "./RangeCalendar";
+export * from "./TimeField";
 
 // This type defines the props (name and control) for the hookform version of form inputs.
 // When control is provided, onChange and onBlur should not be allowed.

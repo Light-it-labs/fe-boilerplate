@@ -12,10 +12,12 @@ import {
   DatePicker,
   DateRangePicker,
   RangeCalendar,
+  TimeField,
 } from "~/shared/components";
 import { dateRangeRules, dateRules } from "~/utils";
 
 const playgroundFormSchema = z.object({
+  timefield: z.string({ message: "Time is required" }),
   datefield: dateRules,
   datepicker: dateRules,
   daterangepicker: dateRangeRules,
@@ -32,6 +34,7 @@ export const Playground = () => {
     formState: { errors },
   } = useForm<PlaygroundForm>({
     defaultValues: {
+      timefield: undefined,
       datefield: undefined,
       datepicker: undefined,
       daterangepicker: undefined,
@@ -50,6 +53,13 @@ export const Playground = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-3'>
+      <TimeField
+        name='timefield'
+        control={control}
+        label='Choose time'
+        errorMessage={errors.timefield?.message}
+        description='This is a help text'
+      />
       <DateField
         name='datefield'
         label='Choose date from datefield'
