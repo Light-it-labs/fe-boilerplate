@@ -12,7 +12,12 @@ import {
 import { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
-import { useFieldController, WithHookForm, WithoutHookForm } from "~/shared";
+import {
+  isFirstChild,
+  useFieldController,
+  WithHookForm,
+  WithoutHookForm,
+} from "~/shared";
 
 const classNames = tv({
   slots: {
@@ -52,13 +57,16 @@ export const TimeField = <T extends TimeValue, U extends FieldValues>({
         controller?.field.onChange(newTime.toString());
       }}
       onBlur={controller?.field.onBlur}
-      ref={controller?.field.ref}
       {...props}
     >
       <Label>{label}</Label>
       <DateInput className={classNames.dateInput}>
         {(segment) => (
-          <DateSegment segment={segment} className={classNames.dateSegment} />
+          <DateSegment
+            ref={(el) => isFirstChild(el) && controller?.field.ref(el)}
+            className={classNames.dateSegment}
+            segment={segment}
+          />
         )}
       </DateInput>
       {errorMessage && (

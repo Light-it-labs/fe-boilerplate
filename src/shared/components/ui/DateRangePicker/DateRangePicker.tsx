@@ -19,6 +19,7 @@ import { tv } from "tailwind-variants";
 
 import {
   currentTimezone,
+  isFirstChild,
   useFieldController,
   WithHookForm,
   WithoutHookForm,
@@ -77,7 +78,11 @@ export const DateRangePicker = <T extends DateValue, U extends FieldValues>({
       <Group className={classNames.dateGroup}>
         <DateInput slot='start' className={classNames.dateInput}>
           {(segment) => (
-            <DateSegment className={classNames.dateSegment} segment={segment} />
+            <DateSegment
+              ref={(el) => isFirstChild(el) && controller?.field.ref(el)}
+              className={classNames.dateSegment}
+              segment={segment}
+            />
           )}
         </DateInput>
         <span aria-hidden='true'>–</span>

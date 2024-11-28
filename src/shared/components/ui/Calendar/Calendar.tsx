@@ -8,7 +8,7 @@ import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
 import { WithHookForm, WithoutHookForm } from "~/shared";
-import { currentTimezone } from "~/utils";
+import { currentTimezone, findFirstEnabledDate } from "~/utils";
 import { CalendarHeader } from "./CalendarHeader";
 import { CalendarTable } from "./CalendarTable";
 
@@ -50,13 +50,19 @@ export const Calendar = <T extends DateValue, U extends FieldValues>({
           );
         }}
         onFocusChange={controller?.field.onBlur}
-        // TODO: ref={field.ref} Need to pass this down to CalendarTable to focus on error
         {...props}
         aria-labelledby={label}
         className={classNames.container}
       >
         <CalendarHeader />
-        <CalendarTable />
+        <CalendarTable
+          ref={(el) => {
+            const firstEnabledDate = findFirstEnabledDate(el);
+            if (firstEnabledDate) {
+              return controller?.field.ref(firstEnabledDate);
+            }
+          }}
+        />
       </AriaCalendar>
       {errorMessage && (
         <Text className={classNames.error()} slot='errorMessage'>

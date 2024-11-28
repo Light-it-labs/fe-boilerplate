@@ -19,7 +19,7 @@ import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
 import { WithHookForm, WithoutHookForm } from "~/shared";
-import { currentTimezone } from "~/utils";
+import { currentTimezone, isFirstChild } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
 
@@ -73,12 +73,14 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
       <Group className={classNames.dateGroup}>
         <DateInput className={classNames.dateInput} slot={slot}>
           {(segment) => (
-            <DateSegment className={classNames.dateSegment} segment={segment} />
+            <DateSegment
+              ref={(el) => isFirstChild(el) && controller?.field.ref(el)}
+              className={classNames.dateSegment}
+              segment={segment}
+            />
           )}
         </DateInput>
-        <Button ref={controller?.field.ref} className={classNames.trigger}>
-          🗓️
-        </Button>
+        <Button className={classNames.trigger}>▼</Button>
       </Group>
       {errorMessage && (
         <Text className={classNames.error()} slot='errorMessage'>

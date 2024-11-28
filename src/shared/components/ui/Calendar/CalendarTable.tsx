@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import {
   CalendarCell,
   CalendarGrid,
@@ -16,7 +17,7 @@ const calendarTable = tv({
 });
 
 const calendarCell = tv({
-  base: "mx-auto my-0.5 flex aspect-square w-8 items-center justify-center rounded-lg text-sm font-semibold text-gray-600 sm:w-11",
+  base: "mx-auto my-0.5 flex aspect-square w-8 items-center justify-center rounded-lg text-sm font-semibold text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#005FCC] sm:w-11",
   variants: {
     state: {
       default: "",
@@ -35,33 +36,42 @@ const calendarCell = tv({
 
 const { root, dayOfWeek } = calendarTable();
 
-export const CalendarTable = (props: CalendarGridProps) => {
-  return (
-    <CalendarGrid weekdayStyle='short' className={root()} {...props}>
-      <CalendarGridHeader>
-        {(day) => (
-          <CalendarHeaderCell className={dayOfWeek()}>{day}</CalendarHeaderCell>
-        )}
-      </CalendarGridHeader>
-      <CalendarGridBody>
-        {(date) => (
-          <CalendarCell
-            className={({ isDisabled, isUnavailable, isSelected }) =>
-              calendarCell({
-                state: isSelected
-                  ? "selected"
-                  : isDisabled
-                    ? "disabled"
-                    : isUnavailable
-                      ? "unavailable"
-                      : "default",
-                hoverable: !isUnavailable && !isDisabled && !isSelected,
-              })
-            }
-            date={date}
-          />
-        )}
-      </CalendarGridBody>
-    </CalendarGrid>
-  );
-};
+export const CalendarTable = forwardRef<HTMLTableElement, CalendarGridProps>(
+  (props, ref) => {
+    return (
+      <CalendarGrid
+        ref={ref}
+        weekdayStyle='short'
+        className={root()}
+        {...props}
+      >
+        <CalendarGridHeader>
+          {(day) => (
+            <CalendarHeaderCell className={dayOfWeek()}>
+              {day}
+            </CalendarHeaderCell>
+          )}
+        </CalendarGridHeader>
+        <CalendarGridBody>
+          {(date) => (
+            <CalendarCell
+              className={({ isDisabled, isUnavailable, isSelected }) =>
+                calendarCell({
+                  state: isSelected
+                    ? "selected"
+                    : isDisabled
+                      ? "disabled"
+                      : isUnavailable
+                        ? "unavailable"
+                        : "default",
+                  hoverable: !isUnavailable && !isDisabled && !isSelected,
+                })
+              }
+              date={date}
+            />
+          )}
+        </CalendarGridBody>
+      </CalendarGrid>
+    );
+  },
+);

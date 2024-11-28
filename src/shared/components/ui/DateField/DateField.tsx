@@ -14,7 +14,7 @@ import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
 import { WithHookForm, WithoutHookForm } from "~/shared";
-import { currentTimezone } from "~/utils";
+import { currentTimezone, isFirstChild } from "~/utils";
 
 const classNames = tv({
   slots: {
@@ -62,7 +62,11 @@ export const DateField = <T extends DateValue, U extends FieldValues>({
       <Label>{label}</Label>
       <DateInput className={classNames.dateInput}>
         {(segment) => (
-          <DateSegment className={classNames.dateSegment} segment={segment} />
+          <DateSegment
+            ref={(el) => isFirstChild(el) && controller?.field.ref(el)}
+            className={classNames.dateSegment}
+            segment={segment}
+          />
         )}
       </DateInput>
       {errorMessage && (

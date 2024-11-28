@@ -12,7 +12,7 @@ import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
 import { WithHookForm, WithoutHookForm } from "~/shared";
-import { currentTimezone } from "~/utils";
+import { currentTimezone, findFirstEnabledDate } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
 
@@ -65,7 +65,14 @@ export const RangeCalendar = <T extends DateValue, U extends FieldValues>({
       >
         <CalendarHeader />
         <div className={classNames.calendars()}>
-          <CalendarTable />
+          <CalendarTable
+            ref={(el) => {
+              const firstEnabledDate = findFirstEnabledDate(el);
+              if (firstEnabledDate) {
+                return controller?.field.ref(firstEnabledDate);
+              }
+            }}
+          />
           <CalendarTable offset={{ months: 1 }} />
         </div>
       </AriaRangeCalendar>
