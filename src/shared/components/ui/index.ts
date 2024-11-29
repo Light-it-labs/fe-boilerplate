@@ -5,6 +5,7 @@ export * from "./Calendar";
 export * from "./DateField";
 export * from "./DateRangePicker";
 export * from "./DatePicker";
+export * from "./FieldMessage";
 export * from "./Modal";
 export * from "./RangeCalendar";
 export * from "./TimeField";

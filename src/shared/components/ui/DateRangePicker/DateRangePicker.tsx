@@ -12,13 +12,13 @@ import {
   Label,
   Popover,
   RangeCalendar,
-  Text,
 } from "react-aria-components";
 import { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import {
   currentTimezone,
+  FieldMessage,
   isFirstChild,
   useFieldController,
   WithHookForm,
@@ -35,8 +35,6 @@ const classNames = tv({
     dateInput:
       "flex w-full items-center space-x-1 rounded-lg border p-2 md:w-fit",
     dateSegment: "font-medium text-gray-800",
-    error: "text-xs text-red-500",
-    desc: "text-xs",
   },
 })();
 
@@ -93,16 +91,9 @@ export const DateRangePicker = <T extends DateValue, U extends FieldValues>({
         </DateInput>
         <Button>▼</Button>
       </Group>
-      {errorMessage && (
-        <Text className={classNames.error()} slot='errorMessage'>
-          {errorMessage}
-        </Text>
-      )}
-      {description && !errorMessage && (
-        <Text className={classNames.desc()} slot='description'>
-          {description}
-        </Text>
-      )}
+
+      <FieldMessage description={description} error={errorMessage} />
+
       <Popover>
         <Dialog>
           <RangeCalendar

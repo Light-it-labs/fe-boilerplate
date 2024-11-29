@@ -7,13 +7,12 @@ import {
   DateInput,
   DateSegment,
   Label,
-  Text,
 } from "react-aria-components";
 import { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
-import { WithHookForm, WithoutHookForm } from "~/shared";
+import { FieldMessage, WithHookForm, WithoutHookForm } from "~/shared";
 import { currentTimezone, isFirstChild } from "~/utils";
 
 const classNames = tv({
@@ -21,8 +20,6 @@ const classNames = tv({
     dateInput:
       "flex w-full items-center space-x-1 rounded-lg border p-2 md:w-fit",
     dateSegment: "font-medium text-gray-800",
-    error: "text-xs text-red-500",
-    desc: "text-xs",
   },
 })();
 
@@ -69,16 +66,7 @@ export const DateField = <T extends DateValue, U extends FieldValues>({
           />
         )}
       </DateInput>
-      {errorMessage && (
-        <Text className={classNames.error()} slot='errorMessage'>
-          {errorMessage}
-        </Text>
-      )}
-      {description && !errorMessage && (
-        <Text className={classNames.desc()} slot='description'>
-          {description}
-        </Text>
-      )}
+      <FieldMessage description={description} error={errorMessage} />
     </AriaDateField>
   );
 };

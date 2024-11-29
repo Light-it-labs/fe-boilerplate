@@ -5,13 +5,12 @@ import type {
 import {
   RangeCalendar as AriaRangeCalendar,
   Label,
-  Text,
 } from "react-aria-components";
 import { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
-import { WithHookForm, WithoutHookForm } from "~/shared";
+import { FieldMessage, WithHookForm, WithoutHookForm } from "~/shared";
 import { currentTimezone, findFirstEnabledDate } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
@@ -20,8 +19,6 @@ const classNames = tv({
   slots: {
     container: "w-full rounded-lg border bg-white p-5 md:w-fit",
     calendars: "flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0",
-    error: "text-xs text-red-500",
-    desc: "text-xs",
   },
 })();
 
@@ -76,16 +73,7 @@ export const RangeCalendar = <T extends DateValue, U extends FieldValues>({
           <CalendarTable offset={{ months: 1 }} />
         </div>
       </AriaRangeCalendar>
-      {errorMessage && (
-        <Text className={classNames.error()} slot='errorMessage'>
-          {errorMessage}
-        </Text>
-      )}
-      {description && !errorMessage && (
-        <Text className={classNames.desc()} slot='description'>
-          {description}
-        </Text>
-      )}
+      <FieldMessage description={description} error={errorMessage} />
     </div>
   );
 };

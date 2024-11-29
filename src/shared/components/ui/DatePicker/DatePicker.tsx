@@ -12,13 +12,12 @@ import {
   Group,
   Label,
   Popover,
-  Text,
 } from "react-aria-components";
 import type { FieldValues } from "react-hook-form";
 import { tv } from "tailwind-variants";
 
 import { useFieldController } from "~/hooks";
-import { WithHookForm, WithoutHookForm } from "~/shared";
+import { FieldMessage, WithHookForm, WithoutHookForm } from "~/shared";
 import { currentTimezone, isFirstChild } from "~/utils";
 import { CalendarHeader } from "../Calendar/CalendarHeader";
 import { CalendarTable } from "../Calendar/CalendarTable";
@@ -31,8 +30,6 @@ const classNames = tv({
     trigger: "border-l px-4 py-2",
     popover:
       "w-[var(--trigger-width)] overflow-auto rounded-lg border bg-white p-4 md:w-fit",
-    error: "text-xs text-red-500",
-    desc: "text-xs",
   },
 })();
 
@@ -82,16 +79,9 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
         </DateInput>
         <Button className={classNames.trigger}>▼</Button>
       </Group>
-      {errorMessage && (
-        <Text className={classNames.error()} slot='errorMessage'>
-          {errorMessage}
-        </Text>
-      )}
-      {description && !errorMessage && (
-        <Text className={classNames.desc()} slot='description'>
-          {description}
-        </Text>
-      )}
+
+      <FieldMessage description={description} error={errorMessage} />
+
       <Popover className={classNames.popover}>
         <Dialog>
           <Calendar>
