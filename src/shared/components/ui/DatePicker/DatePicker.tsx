@@ -38,6 +38,7 @@ interface DatePickerBaseProps<T extends DateValue>
   label?: string;
   description?: string;
   errorMessage?: string;
+  triggerIcon?: React.ReactNode;
 }
 
 type DatePickerProps<
@@ -52,6 +53,7 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
   name,
   control,
   slot,
+  triggerIcon = "▼",
   ...props
 }: DatePickerProps<T, U>) => {
   const controller = useFieldController({ name, control });
@@ -77,7 +79,7 @@ export const DatePicker = <T extends DateValue, U extends FieldValues>({
             />
           )}
         </DateInput>
-        <Button className={classNames.trigger}>▼</Button>
+        <Button className={classNames.trigger}>{triggerIcon}</Button>
       </Group>
 
       <FieldMessage description={description} error={errorMessage} />

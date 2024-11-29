@@ -43,6 +43,7 @@ interface DateRangePickerBaseProps<T extends DateValue>
   label?: string;
   description?: string;
   errorMessage?: string;
+  triggerIcon?: React.ReactNode;
 }
 
 type DateRangePickerProps<
@@ -56,6 +57,7 @@ export const DateRangePicker = <T extends DateValue, U extends FieldValues>({
   errorMessage,
   control,
   name,
+  triggerIcon = "▼",
   ...props
 }: DateRangePickerProps<T, U>) => {
   const controller = useFieldController({ name, control });
@@ -89,7 +91,7 @@ export const DateRangePicker = <T extends DateValue, U extends FieldValues>({
             <DateSegment segment={segment} className={classNames.dateSegment} />
           )}
         </DateInput>
-        <Button>▼</Button>
+        <Button>{triggerIcon}</Button>
       </Group>
 
       <FieldMessage description={description} error={errorMessage} />

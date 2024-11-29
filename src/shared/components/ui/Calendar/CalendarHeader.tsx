@@ -12,15 +12,23 @@ const calendarHeader = tv({
 
 const { root, previous, next, heading } = calendarHeader();
 
-export const CalendarHeader = () => {
+interface CalendarHeaderProps {
+  prevIcon?: React.ReactNode;
+  nextIcon?: React.ReactNode;
+}
+
+export const CalendarHeader = ({
+  prevIcon = "◀",
+  nextIcon = "▶",
+}: CalendarHeaderProps) => {
   return (
     <header className={root()}>
       <Button className={previous()} slot='previous'>
-        ◀
+        {prevIcon}
       </Button>
       <Heading className={heading()} />
       <Button className={next()} slot='next'>
-        ▶
+        {nextIcon}
       </Button>
     </header>
   );
