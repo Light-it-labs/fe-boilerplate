@@ -17,7 +17,7 @@ const calendarTable = tv({
 });
 
 const calendarCell = tv({
-  base: "mx-auto my-0.5 flex aspect-square w-8 items-center justify-center rounded-lg text-sm font-semibold text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#005FCC] sm:w-11",
+  base: `mx-auto my-0.5 flex aspect-square w-8 items-center justify-center rounded-lg text-sm font-semibold text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#005FCC] sm:w-11`,
   variants: {
     state: {
       default: "",
@@ -52,24 +52,40 @@ export const CalendarTable = forwardRef<HTMLTableElement, CalendarGridProps>(
             </CalendarHeaderCell>
           )}
         </CalendarGridHeader>
+
         <CalendarGridBody>
-          {(date) => (
-            <CalendarCell
-              className={({ isDisabled, isUnavailable, isSelected }) =>
-                calendarCell({
-                  state: isSelected
-                    ? "selected"
-                    : isDisabled
-                      ? "disabled"
-                      : isUnavailable
-                        ? "unavailable"
-                        : "default",
-                  hoverable: !isUnavailable && !isDisabled && !isSelected,
-                })
-              }
-              date={date}
-            />
-          )}
+          {(date) => {
+            const getCellState = ({
+              isDisabled,
+              isUnavailable,
+              isSelected,
+            }: {
+              isDisabled: boolean;
+              isUnavailable: boolean;
+              isSelected: boolean;
+            }) => {
+              if (isSelected) return "selected";
+              if (isDisabled) return "disabled";
+              if (isUnavailable) return "unavailable";
+              return "default";
+            };
+
+            return (
+              <CalendarCell
+                className={({ isDisabled, isUnavailable, isSelected }) =>
+                  calendarCell({
+                    state: getCellState({
+                      isDisabled,
+                      isUnavailable,
+                      isSelected,
+                    }),
+                    hoverable: !isUnavailable && !isDisabled && !isSelected,
+                  })
+                }
+                date={date}
+              />
+            );
+          }}
         </CalendarGridBody>
       </CalendarGrid>
     );
