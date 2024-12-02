@@ -34,7 +34,7 @@ const classNames = tv({
 })();
 
 interface DatePickerBaseProps<T extends DateValue>
-  extends AriaDatePickerProps<T> {
+  extends Omit<AriaDatePickerProps<T>, "className"> {
   label?: string;
   description?: string;
   errorMessage?: string;

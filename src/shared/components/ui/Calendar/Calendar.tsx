@@ -17,7 +17,8 @@ const classNames = tv({
     container: "w-full rounded-lg border bg-white p-5 md:w-fit",
   },
 })();
-interface CalendarBaseProps<T extends DateValue> extends AriaCalendarProps<T> {
+interface CalendarBaseProps<T extends DateValue>
+  extends Omit<AriaCalendarProps<T>, "className"> {
   errorMessage?: string;
   label?: string;
   description?: string;

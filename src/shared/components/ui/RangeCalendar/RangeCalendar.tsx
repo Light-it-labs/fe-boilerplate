@@ -23,7 +23,7 @@ const classNames = tv({
 })();
 
 interface RangeCalendarBaseProps<T extends DateValue>
-  extends AriaRangeCalendarProps<T> {
+  extends Omit<AriaRangeCalendarProps<T>, "className"> {
   errorMessage?: string;
   label?: string;
   description?: string;

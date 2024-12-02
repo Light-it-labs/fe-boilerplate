@@ -28,7 +28,7 @@ const classNames = tv({
 })();
 
 interface TimeFieldBaseProps<T extends TimeValue>
-  extends AriaTimeFieldProps<T> {
+  extends Omit<AriaTimeFieldProps<T>, "className"> {
   label?: string;
   description?: string;
   errorMessage?: string;

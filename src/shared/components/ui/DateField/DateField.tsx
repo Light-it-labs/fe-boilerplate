@@ -24,7 +24,7 @@ const classNames = tv({
 })();
 
 interface DateFieldBaseProps<T extends DateValue>
-  extends AriaDateFieldProps<T> {
+  extends Omit<AriaDateFieldProps<T>, "className"> {
   label?: string;
   description?: string;
   errorMessage?: string;
