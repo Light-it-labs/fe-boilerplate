@@ -1,5 +1,5 @@
-import { today } from "@internationalized/date";
 import type { Meta, StoryObj } from "@storybook/react";
+import { isBefore, startOfToday } from "date-fns";
 import { I18nProvider } from "react-aria-components";
 
 import { currentTimezone } from "~/utils";
@@ -54,7 +54,7 @@ export const DisabledBeforeToday: Story = {
     docs: {
       description: {
         story:
-          "Disabling dates is achieved by passing a filtering function to the `isDateUnavailable` prop. It receives each `dateValue`, and you can run that through any check. You can use any of the checking functions from `@internationalized/date` or compare dates using `dateValue.compare()`",
+          "Disabling dates is achieved by passing a filtering function to the `isDateUnavailable` prop. It receives each `dateValue`, and you can run that through any check. You can use any of the checking functions from `date-fns` or compare dates using `dateValue.compare()`",
       },
     },
   },
@@ -62,7 +62,7 @@ export const DisabledBeforeToday: Story = {
     return (
       <Calendar
         isDateUnavailable={(dateValue) =>
-          dateValue.compare(today(currentTimezone)) < 0
+          isBefore(dateValue.toDate(currentTimezone), startOfToday())
         }
       />
     );
