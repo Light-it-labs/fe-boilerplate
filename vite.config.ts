@@ -17,6 +17,7 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
   } = process.env;
 
   const baseConfig = {
+    base: "./",
     plugins: [
       react(),
       sentryVitePlugin({
@@ -33,6 +34,13 @@ const config = ({ mode }: ConfigEnv): UserConfigExport => {
       open: true,
       origin: VITE_APP_ENV === "local" ? VITE_APP_URL : "",
     },
+    assetsInclude: [
+      "**/*.png",
+      "**/*.svg",
+      "**/*.jpg",
+      "**/*.jpeg",
+      "**/*.gif",
+    ],
     resolve: {
       alias: [
         {

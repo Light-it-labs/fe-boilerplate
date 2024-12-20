@@ -7,8 +7,8 @@ import { NotFound } from "~/sections";
 export const Router = () => {
   return (
     <BrowserRouter>
-      <GuestRouter />
       <Routes>
+        <Route path='/' element={<GuestRouter />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

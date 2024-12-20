@@ -19,6 +19,7 @@ export const RouterWrapper = ({ guest = false, children }: Props) => {
   return (
     <Routes>
       <Route element={<MainLayout />}>{children}</Route>
+      <Route path='*' element={<Navigate replace to={"/"} />} />
     </Routes>
   );
 };

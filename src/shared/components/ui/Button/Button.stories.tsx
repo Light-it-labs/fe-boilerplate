@@ -80,7 +80,23 @@ export const Disabled: Story = {
     size: { table: { disable: true } },
     variant: { table: { disable: true } },
   },
-  args: {
-    disabled: true,
-  },
+  render: (args) => (
+    <div className='flex size-full items-center gap-4'>
+      <Button {...args} variant='default' disabled>
+        Default
+      </Button>
+      <Button {...args} variant='outline' disabled>
+        Outline
+      </Button>
+      <Button {...args} variant='info' disabled>
+        Info
+      </Button>
+      <Button {...args} variant='success' disabled>
+        Success
+      </Button>
+      <Button {...args} variant='error' disabled>
+        Error
+      </Button>
+    </div>
+  ),
 };

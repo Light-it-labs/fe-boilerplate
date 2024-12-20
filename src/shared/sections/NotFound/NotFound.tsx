@@ -1,15 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { LightitLogo } from "~/assets";
-import { Button } from "~/components";
+import { Button, Logo } from "~/components";
 
 export const NotFound = () => {
   const navigate = useNavigate();
   return (
     <main className='flex h-screen flex-col items-center justify-center'>
       <div className='mb-20'>
-        <img src={LightitLogo} alt='logo' />
+        <Logo />
       </div>
 
       <p className='mb-10 text-2xl'>

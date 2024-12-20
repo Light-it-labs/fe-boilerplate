@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants";
 import type { VariantProps } from "tailwind-variants";
 
 const buttonVariants = tv({
-  base: "focus-visible:ring-ring inline-flex size-fit items-center justify-center whitespace-nowrap rounded-md text-sm font-medium text-white ring-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+  base: "focus-visible:ring-ring inline-flex size-fit items-center justify-center whitespace-nowrap rounded-md text-sm font-medium text-white ring-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-300/50",
   variants: {
     variant: {
       default: "bg-purple-500 hover:bg-purple-700",
@@ -19,9 +19,6 @@ const buttonVariants = tv({
       sm: "p-2 text-sm",
       lg: "px-6 py-4 text-lg",
     },
-    disabled: {
-      true: "pointer-events-none bg-gray-300 hover:bg-gray-300/50",
-    },
   },
   defaultVariants: {
     variant: "default",
@@ -35,18 +32,23 @@ export type ButtonProps = {
 } & React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants>;
 
-const Button = React.forwardRef<React.ElementRef<"button">, ButtonProps>(
-  ({ className, variant, size, disabled, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={buttonVariants({ variant, size, disabled, className })}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
-Button.displayName = "Button";
+const Button = ({
+  className,
+  variant,
+  size,
+  disabled,
+  asChild = false,
+  ref,
+  ...props
+}: ButtonProps) => {
+  const Comp = asChild ? Slot : "button";
+  return (
+    <Comp
+      className={buttonVariants({ variant, size, className })}
+      ref={ref}
+      {...props}
+    />
+  );
+};
 
 export { Button, buttonVariants };
