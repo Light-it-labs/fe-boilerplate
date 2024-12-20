@@ -7,6 +7,9 @@ export default {
   // Change this with the extensions you are going to use.
   content: ["./src/**/*.{html,js,jsx,md,mdx,svelte,ts,tsx,vue,svg}"],
   theme: {
+    fontFamily: {
+      sans: ["'Manrope'", "sans-serif"],
+    },
     screens: {
       // These are the default media queries.
       // We're declaring them to make it easier to import and use in react for js checks
