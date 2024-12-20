@@ -18,10 +18,10 @@ export const NotFound = () => {
       <Button
         size='sm'
         onClick={() => {
-          navigate(-1);
+          navigate("/");
         }}
       >
-        Go Back
+        Go home
       </Button>
     </main>
   );
